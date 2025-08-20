@@ -1,0 +1,2951 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediksi Attrition Karyawan | AttritionPredict</title>
+    <!-- SEO & Performance -->
+    <meta
+      name="description"
+      content="AttritionPredict membantu HR memprediksi risiko attrition karyawan dengan AI. Isi form atau upload CSV untuk hasil cepat dan akurat."
+    />
+    <link rel="canonical" href="https://example.com/" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <!-- Tailwind (CDN untuk dev; produksi sebaiknya build) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Style kustom (opsional) -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Noscript fallback -->
+    <noscript>
+      <div class="bg-yellow-50 text-yellow-800 p-4 text-sm text-center">
+        Situs ini membutuhkan JavaScript untuk memproses prediksi & upload CSV.
+      </div>
+    </noscript>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Skip to main -->
+    <a href="#prediksi" class="sr-only sr-skip">Lewati ke Form Prediksi</a>
+
+    <!-- Navbar -->
+    <header id="navbar" class="fixed inset-x-0 top-0 z-50 text-white">
+      <!-- same gradient as #hero -->
+      <div
+        class="absolute inset-0 -z-10 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+        aria-hidden="true"
+      ></div>
+
+      <!-- subtle texture to mirror hero -->
+      <div
+        class="absolute inset-0 -z-10 opacity-15 mix-blend-screen bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')]"
+        aria-hidden="true"
+      ></div>
+
+      <!-- divider line like hero -->
+      <div
+        class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+        aria-hidden="true"
+      ></div>
+
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="h-16 flex items-center justify-between">
+          <!-- Brand -->
+          <a
+            href=""
+            class="text-xl md:text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-yellow-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded"
+            aria-label="Kembali ke bagian atas"
+          >
+            AttritionPredict
+          </a>
+
+          <!-- Mobile toggle (checkbox, no JS) -->
+          <input
+            id="nav-toggle"
+            type="checkbox"
+            class="peer sr-only"
+            aria-hidden="true"
+          />
+          <label
+            for="nav-toggle"
+            class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg ring-1 ring-white/20 bg-white/10 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 cursor-pointer"
+            aria-controls="mobile-menu"
+          >
+            <span class="sr-only">Buka menu</span>
+            <!-- burger -->
+            <svg
+              class="peer-checked:hidden h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <!-- close -->
+            <svg
+              class="hidden peer-checked:block h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </label>
+
+          <!-- Desktop nav -->
+          <nav
+            id="nav-links"
+            class="hidden md:flex items-center gap-8"
+            aria-label="Navigasi utama"
+          >
+            <a
+              href="#tentang"
+              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
+              >Tentang</a
+            >
+            <a
+              href="#fitur-data"
+              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
+              >Fitur - Data</a
+            >
+            <a
+              href="#model"
+              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
+              >Model</a
+            >
+            <a
+              href="#cara-kerja"
+              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
+              >Cara Kerja</a
+            >
+
+            <!-- Optional CTA -->
+            <a
+              href="#prediksi"
+              class="ml-2 inline-flex items-center gap-2 rounded-xl px-4 py-2 font-semibold bg-white/10 ring-1 ring-white/20 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 transition"
+            >
+              Mulai
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Mobile menu -->
+        <nav
+          id="mobile-menu"
+          class="peer-checked:block hidden md:hidden mt-2 rounded-xl bg-white/10 ring-1 ring-white/20 backdrop-blur p-4 space-y-2"
+          role="dialog"
+          aria-label="Menu mobile"
+        >
+          <a
+            href="#tentang"
+            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
+            >Tentang</a
+          >
+          <a
+            href="#fitur-data"
+            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
+            >Fitur - Data</a
+          >
+          <a
+            href="#model"
+            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
+            >Model</a
+          >
+          <a
+            href="#cara-kerja"
+            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
+            >Cara Kerja</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO — AI AttritionPredict (improved) -->
+    <section
+      id="hero"
+      class="relative mt-16 pt-28 pb-20 text-white overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+      aria-labelledby="hero-title"
+      aria-describedby="hero-subtitle"
+    >
+      <!-- Background decoration -->
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <!-- dotted texture -->
+        <div
+          class="absolute inset-0 opacity-15 mix-blend-screen bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')]"
+        ></div>
+        <!-- glow blobs -->
+        <div
+          class="absolute -top-24 -right-20 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        ></div>
+        <div
+          class="absolute -bottom-32 -left-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-20 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        ></div>
+      </div>
+
+      <div
+        class="mx-auto max-w-7xl px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center"
+      >
+        <!-- Copy -->
+        <div class="text-center lg:text-left">
+          <h1
+            id="hero-title"
+            class="font-extrabold leading-tight tracking-tight text-4xl md:text-5xl lg:text-6xl"
+          >
+            Prediksi
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-yellow-200"
+            >
+              Attrition Karyawan
+            </span>
+            dengan
+            <span
+              class="underline decoration-yellow-300 decoration-4 underline-offset-4"
+              >Kecerdasan Buatan</span
+            >
+          </h1>
+
+          <p
+            id="hero-subtitle"
+            class="mt-4 text-lg md:text-xl/relaxed text-white/90 max-w-2xl mx-auto lg:mx-0"
+          >
+            Bantu HR mengambil keputusan strategis dengan analisis cepat &
+            akurat untuk mengidentifikasi risiko karyawan keluar.
+          </p>
+
+          <!-- CTAs -->
+          <div
+            class="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start"
+          >
+            <a
+              href="#prediksi"
+              class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold shadow-lg bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 ring-1 ring-black/5 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-blue-800 transition motion-reduce:transition-none"
+              aria-label="Mulai Prediksi Attrition sekarang"
+            >
+              Mulai Prediksi
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="#fitur-data"
+              class="inline-flex items-center gap-2 rounded-xl px-5 py-3 font-medium bg-white/10 ring-1 ring-white/20 backdrop-blur hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition motion-reduce:transition-none"
+              aria-label="Lihat template CSV"
+            >
+              Lihat Template CSV
+            </a>
+          </div>
+
+          <!-- Trust / social proof -->
+          <ul
+            class="mt-6 flex flex-wrap items-center gap-2 justify-center lg:justify-start"
+            aria-label="Keunggulan sistem"
+          >
+            <li
+              class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1.5 ring-1 ring-white/15"
+            >
+              <span
+                class="inline-block w-2 h-2 rounded-full bg-emerald-300"
+              ></span>
+              Akurasi model 86.7% (RF)
+            </li>
+            <li
+              class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1.5 ring-1 ring-white/15"
+            >
+              ⚡ Respons &lt; 1 detik*
+            </li>
+            <li
+              class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1.5 ring-1 ring-white/15"
+            >
+              📄 CSV siap pakai
+            </li>
+          </ul>
+
+          <p class="mt-2 text-xs text-white/70">
+            *Bergantung ukuran data & koneksi. Tidak perlu login.
+          </p>
+        </div>
+
+        <!-- Illustration / Product peek -->
+        <div class="relative">
+          <!-- device card mock -->
+          <figure
+            class="mx-auto w-full max-w-md rounded-2xl bg-white/10 ring-1 ring-white/20 p-5 backdrop-blur shadow-2xl"
+            role="img"
+            aria-label="Cuplikan hasil prediksi attrition"
+          >
+            <figcaption class="sr-only">
+              Cuplikan hasil prediksi attrition
+            </figcaption>
+
+            <!-- header -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span
+                  class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white/15 ring-1 ring-white/20"
+                >
+                  <!-- shield icon -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-white/90"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 3l7 4v5c0 5-3.5 9-7 9s-7-4-7-9V7l7-4z"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm/5 text-white/90">AttritionPredict</p>
+                  <p class="text-xs text-white/60">AI Risk Scoring</p>
+                </div>
+              </div>
+              <span
+                class="text-xs px-2 py-1 rounded-full bg-emerald-400/20 text-emerald-200 ring-1 ring-emerald-300/30"
+                >Ready</span
+              >
+            </div>
+
+            <!-- score -->
+            <div class="mt-5">
+              <div class="flex items-end justify-between">
+                <h3 class="text-lg font-semibold">Probabilitas Attrition</h3>
+                <span class="text-sm text-white/80">0.85 • Tinggi</span>
+              </div>
+              <!-- progress (pure CSS) -->
+              <div
+                class="mt-2 h-3 w-full rounded-full bg-white/10 ring-1 ring-white/15 overflow-hidden"
+              >
+                <div
+                  class="h-full w-[72%] bg-gradient-to-r from-amber-300 to-rose-400"
+                ></div>
+              </div>
+              <p class="mt-2 text-xs text-white/70">
+                Faktor utama: OverTime, JobSatisfaction, YearsAtCompany
+              </p>
+            </div>
+
+            <!-- small grid of features -->
+            <div class="mt-5 grid grid-cols-2 gap-3">
+              <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
+                <p class="text-xs text-white/70">Batch CSV</p>
+                <p class="font-semibold">Upload &amp; Prediksi</p>
+              </div>
+              <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
+                <p class="text-xs text-white/70">Realtime</p>
+                <p class="font-semibold">Form Tunggal</p>
+              </div>
+            </div>
+          </figure>
+
+          <!-- floating chips -->
+          <div class="absolute -left-4 top-6 md:-left-10">
+            <div
+              class="rounded-full bg-white/10 ring-1 ring-white/20 px-3 py-1.5 text-xs backdrop-blur"
+            >
+              🔒 Data aman
+            </div>
+          </div>
+          <div class="absolute -right-2 -bottom-3 md:-right-6">
+            <div
+              class="rounded-full bg-white/10 ring-1 ring-white/20 px-3 py-1.5 text-xs backdrop-blur"
+            >
+              🧮 SHAP-ready
+            </div>
+          </div>
+
+          <!-- base shadow -->
+          <div
+            class="mx-auto mt-6 h-3 w-48 rounded-full bg-black/20 blur-xl opacity-40"
+          ></div>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div
+        class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- Tentang (Improved, Tailwind-only) -->
+    <section
+      id="tentang"
+      aria-labelledby="about-title"
+      class="relative scroll-mt-24 py-20 text-slate-800 dark:text-slate-100 overflow-hidden"
+    >
+      <!-- Background: ringan namun tetap nyambung ke hero -->
+      <div
+        class="absolute inset-0 -z-10 bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+        aria-hidden="true"
+      ></div>
+      <!-- dotted texture -->
+      <div
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        aria-hidden="true"
+      ></div>
+      <!-- glow blobs -->
+      <div
+        class="pointer-events-none absolute -top-24 -left-16 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-24 -right-16 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-20 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 items-center gap-12 relative"
+      >
+        <!-- Gambar (glassy card + chips) -->
+        <figure class="relative">
+          <div
+            class="group mx-auto w-full max-w-md rounded-2xl bg-white/70 dark:bg-white/10 backdrop-blur ring-1 ring-black/5 dark:ring-white/10 p-5 shadow-xl transition hover:translate-y-[-2px] motion-reduce:transition-none"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/9071/9071315.png"
+              alt="Ilustrasi analitik HR dengan AI"
+              class="w-full rounded-xl"
+              loading="lazy"
+              decoding="async"
+              width="512"
+              height="512"
+            />
+            <!-- chips kecil -->
+            <div class="absolute -left-7 -top-9">
+              <span
+                class="rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-black/5 dark:ring-white/15 px-3 py-1.5 text-xs backdrop-blur"
+                >🔒 Data aman</span
+              >
+            </div>
+            <div class="absolute -right-7 -bottom-9">
+              <span
+                class="rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-black/5 dark:ring-white/15 px-3 py-1.5 text-xs backdrop-blur"
+                >⚡ Realtime & Batch</span
+              >
+            </div>
+          </div>
+          <figcaption class="sr-only">
+            Ilustrasi fitur AI untuk analitik HR
+          </figcaption>
+        </figure>
+
+        <!-- Konten -->
+        <div class="text-center lg:text-left">
+          <h2
+            id="about-title"
+            class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
+          >
+            Tentang
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-200 dark:to-yellow-200"
+            >
+              AttritionPredict
+            </span>
+          </h2>
+
+          <p
+            class="text-lg leading-relaxed max-w-prose mx-auto lg:mx-0 text-slate-700 dark:text-slate-200"
+          >
+            <strong>AttritionPredict</strong> adalah aplikasi berbasis
+            <span class="font-semibold text-blue-700 dark:text-cyan-200"
+              >Machine Learning</span
+            >
+            yang membantu <strong>departemen HR</strong> memprediksi kemungkinan
+            karyawan meninggalkan perusahaan secara cepat dan akurat.
+          </p>
+
+          <!-- Keunggulan (kartu seragam) -->
+          <ul
+            class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-slate-700 dark:text-slate-100"
+            aria-label="Keunggulan sistem"
+          >
+            <li
+              class="flex items-start gap-3 rounded-xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10"
+            >
+              <span
+                class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
+                >✔</span
+              >
+              <span>Analisis cepat & akurat</span>
+            </li>
+            <li
+              class="flex items-start gap-3 rounded-xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10"
+            >
+              <span
+                class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
+                >📊</span
+              >
+              <span>Prediksi berbasis data nyata</span>
+            </li>
+            <li
+              class="flex items-start gap-3 rounded-xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10"
+            >
+              <span
+                class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
+                >💡</span
+              >
+              <span>Rekomendasi langkah preventif</span>
+            </li>
+          </ul>
+
+          <!-- CTA (selaras hero) -->
+          <div
+            class="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start"
+          >
+            <a
+              href="#cara-kerja"
+              class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold shadow-lg bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 ring-1 ring-black/5 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-yellow-300 dark:text-slate-900"
+            >
+              Pelajari Cara Kerjanya
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 transition-transform group-hover:translate-x-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+            <a
+              href="#model"
+              class="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-medium bg-white/70 ring-1 ring-slate-200 text-slate-800 shadow-sm hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 dark:bg-white/10 dark:ring-white/15 dark:text-white dark:hover:bg-white/15"
+            >
+              Lihat Model
+            </a>
+          </div>
+
+          <!-- Trust badges ringkas -->
+          <div
+            class="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-sm"
+          >
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 ring-1 ring-slate-200 text-emerald-700 dark:bg-white/10 dark:ring-white/15 dark:text-emerald-200"
+            >
+              🏆 Akurasi 86.7% (RF)
+            </span>
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 ring-1 ring-slate-200 text-blue-700 dark:bg-white/10 dark:ring-white/15 dark:text-cyan-200"
+            >
+              📈 AUC 0.74
+            </span>
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 ring-1 ring-slate-200 text-cyan-700 dark:bg-white/10 dark:ring-white/15 dark:text-cyan-200"
+            >
+              ⚡ Prediksi cepat
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider halus (match hero) -->
+      <div
+        class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/30"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- Fitur & Template CSV -->
+    <section
+      id="fitur-data"
+      class="relative scroll-mt-24 py-20 text-slate-800 overflow-hidden bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+      aria-labelledby="dataset-title"
+    >
+      <!-- texture + glows -->
+      <div
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        aria-hidden="true"
+      ></div>
+
+      <div class="mx-auto max-w-7xl px-6 md:px-8 relative">
+        <!-- Header -->
+        <header class="text-center max-w-3xl mx-auto">
+          <h2
+            id="dataset-title"
+            class="text-4xl md:text-5xl font-extrabold tracking-tight text-white"
+          >
+            Siapkan
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-cyan-200 dark:to-yellow-200"
+              >Dataset Karyawan</span
+            >
+          </h2>
+
+          <p class="mt-2 text-slate-700 dark:text-slate-200">
+            Ikuti 3 langkah singkat agar file langsung siap diproses.
+          </p>
+
+          <ul
+            class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs"
+          >
+            <li
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/70 ring-1 ring-slate-200 text-slate-700 dark:bg-white/10 dark:ring-white/15 dark:text-slate-200"
+            >
+              📄 CSV UTF-8, delimiter koma
+            </li>
+            <li
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/70 ring-1 ring-slate-200 text-slate-700 dark:bg-white/10 dark:ring-white/15 dark:text-slate-200"
+            >
+              🔢 18 kolom wajib + 1 opsional
+            </li>
+            <li
+              class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/70 ring-1 ring-slate-200 text-slate-700 dark:bg-white/10 dark:ring-white/15 dark:text-slate-200"
+            >
+              ⏱️ Validasi real-time
+            </li>
+          </ul>
+        </header>
+
+        <!-- ROW 1: 3 Langkah -->
+        <ol
+          class="mt-10 grid gap-6 md:grid-cols-3"
+          aria-label="Langkah menyiapkan dataset"
+        >
+          <!-- STEP 1 -->
+          <li>
+            <article
+              class="min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-indigo-100/70 via-indigo-50/50 to-cyan-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-indigo-200/60 shadow-sm p-6 flex flex-col"
+            >
+              <!-- header -->
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 flex items-center justify-center rounded-xl bg-indigo-100 text-indigo-700 ring-1 ring-indigo-200 font-semibold"
+                >
+                  1
+                </div>
+                <h3
+                  class="text-xl font-semibold text-indigo-800 dark:text-cyan-100"
+                >
+                  Unduh Template
+                </h3>
+              </div>
+
+              <!-- body -->
+              <div class="mt-2 text-sm text-slate-700 dark:text-slate-200">
+                Gunakan encoding <b>UTF-8</b> & delimiter <b>koma</b>.
+                <div
+                  class="mt-3 rounded-xl bg-slate-900/5 dark:bg-white/5 ring-1 ring-slate-200/60 dark:ring-white/10 overflow-hidden"
+                >
+                  <div
+                    class="px-3 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 bg-slate-900/5 dark:bg-white/5"
+                  >
+                    Contoh 5 baris
+                  </div>
+                  <pre
+                    class="px-3 py-3 text-[12px] leading-5 text-slate-800 dark:text-slate-100 overflow-auto max-h-32"
+                  ><code>EmployeeName,Age,Department,JobRole,JobLevel,MonthlyIncome,OverTime,WorkLifeBalance,YearsAtCompany,YearsWithCurrManager
+"Rizky A",32,"Sales","Sales Executive",2,8400,Yes,Good,4,2
+"Vania D",29,"R&amp;D","Research Scientist",1,6100,No,Better,2,1
+"Adit K",41,"HR","Human Resources",3,12500,No,Best,8,5
+"Intan P",35,"R&amp;D","Laboratory Technician",2,7200,Yes,Satisfied,5,3
+"Rudi S",26,"Sales","Sales Representative",1,5200,No,Good,1,1</code></pre>
+                </div>
+              </div>
+
+              <!-- footer -->
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a
+                  href="{{ url_for('static', filename='template_attrition.csv') }}"
+                  download
+                  class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                >
+                  Download Template CSV
+                </a>
+                <a
+                  href="#struktur-lengkap"
+                  class="inline-flex items-center justify-center rounded-xl border border-slate-300/70 bg-slate-50/60 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 dark:border-white/10"
+                >
+                  Lihat Struktur Lengkap →
+                </a>
+              </div>
+            </article>
+          </li>
+
+          <!-- STEP 2  -->
+          <li>
+            <article
+              class="min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-cyan-100/70 via-cyan-50/50 to-blue-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-cyan-200/60 shadow-sm p-6 flex flex-col"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 flex items-center justify-center rounded-xl bg-cyan-100 text-cyan-700 ring-1 ring-cyan-200 font-semibold"
+                >
+                  2
+                </div>
+                <h3
+                  class="text-xl font-semibold text-cyan-800 dark:text-cyan-100"
+                >
+                  Lengkapi Kolom
+                </h3>
+              </div>
+
+              <p class="mt-2 text-sm text-slate-700 dark:text-slate-200">
+                18 kolom wajib + 1 opsional (<span class="font-medium"
+                  >EmployeeName</span
+                >). Header harus <b>case-sensitive</b>.
+              </p>
+
+              <ul
+                class="mt-3 grid gap-2 [grid-template-columns:repeat(auto-fit,minmax(12rem,1fr))] text-sm text-white"
+              >
+                <li
+                  class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Demografi (Age, MaritalStatus)
+                </li>
+                <li
+                  class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Peran &amp; Level (JobRole, JobLevel)
+                </li>
+                <li
+                  class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Kompensasi (MonthlyIncome, DailyRate)
+                </li>
+                <li
+                  class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Keseimbangan (OverTime, WorkLifeBalance)
+                </li>
+                <li
+                  class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
+                >
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Tenure (YearsAtCompany, YearsWithCurrManager)
+                </li>
+              </ul>
+
+              <!-- Toggle (no-JS modal) -->
+              <input
+                id="supported-toggle"
+                type="checkbox"
+                class="peer sr-only"
+                aria-hidden="true"
+              />
+              <div class="mt-4">
+                <label
+                  for="supported-toggle"
+                  class="inline-flex w-full items-center justify-between rounded-xl border border-slate-300/60 bg-slate-100/60 px-4 py-3 text-left text-sm font-medium text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 cursor-pointer dark:bg-white/10 dark:text-white dark:border-white/10"
+                >
+                  <span>Nilai yang didukung (kategori)</span>
+                  <span
+                    class="inline-flex items-center gap-1 text-cyan-700 dark:text-cyan-200"
+                  >
+                    <svg
+                      class="h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span class="hidden sm:inline text-xs font-semibold"
+                      >Lihat</span
+                    >
+                  </span>
+                </label>
+              </div>
+
+              <!-- MODAL (CSS-only) -->
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="supported-title"
+                class="fixed inset-0 z-[60] hidden peer-checked:flex items-center justify-center"
+              >
+                <!-- overlay -->
+                <label
+                  for="supported-toggle"
+                  class="absolute inset-0 bg-slate-900/40"
+                ></label>
+
+                <!-- dialog -->
+                <div
+                  class="relative mx-4 w-full max-w-2xl rounded-2xl bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shadow-xl"
+                >
+                  <!-- Header -->
+                  <div
+                    class="flex items-center justify-between px-5 py-4 bg-slate-900/5 dark:bg-white/5 border-b border-slate-200/60 dark:border-white/10"
+                  >
+                    <h4
+                      id="supported-title"
+                      class="text-base font-semibold text-slate-800 dark:text-slate-100"
+                    >
+                      Nilai yang Didukung (Kategori)
+                    </h4>
+                    <label
+                      for="supported-toggle"
+                      class="inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-600 dark:text-slate-200 hover:bg-slate-900/5 hover:ring-1 hover:ring-slate-200/60 dark:hover:ring-white/10 cursor-pointer"
+                      aria-label="Tutup"
+                      >✕</label
+                    >
+                  </div>
+
+                  <!-- Body -->
+                  <div class="p-5">
+                    <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                      <div
+                        class="rounded-lg bg-slate-900/5 dark:bg-white/10 p-3 ring-1 ring-slate-100/60 dark:ring-white/10"
+                      >
+                        <div
+                          class="font-medium text-slate-700 dark:text-slate-100"
+                        >
+                          Department
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-300">
+                          Human Resources; Research &amp; Development; Sales
+                        </div>
+                      </div>
+                      <div
+                        class="rounded-lg bg-slate-900/5 dark:bg-white/10 p-3 ring-1 ring-slate-100/60 dark:ring-white/10"
+                      >
+                        <div
+                          class="font-medium text-slate-700 dark:text-slate-100"
+                        >
+                          JobLevel
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-300">
+                          Level 1–5
+                        </div>
+                      </div>
+                      <div
+                        class="rounded-lg bg-slate-900/5 dark:bg-white/10 p-3 ring-1 ring-slate-100/60 dark:ring-white/10"
+                      >
+                        <div
+                          class="font-medium text-slate-700 dark:text-slate-100"
+                        >
+                          OverTime
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-300">
+                          Yes; No
+                        </div>
+                      </div>
+                      <div
+                        class="rounded-lg bg-slate-900/5 dark:bg-white/10 p-3 ring-1 ring-slate-100/60 dark:ring-white/10"
+                      >
+                        <div
+                          class="font-medium text-slate-700 dark:text-slate-100"
+                        >
+                          WorkLifeBalance
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-300">
+                          Bad; Good; Better; Best
+                        </div>
+                      </div>
+                      <div
+                        class="rounded-lg bg-slate-900/5 dark:bg-white/10 p-3 ring-1 ring-slate-100/60 dark:ring-white/10 sm:col-span-2"
+                      >
+                        <div
+                          class="font-medium text-slate-700 dark:text-slate-100"
+                        >
+                          JobRole
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-300">
+                          HR; Laboratory Technician; Manager; Manufacturing
+                          Director; Research Director; Research Scientist; Sales
+                          Executive; Sales Representative; Healthcare
+                          Representative
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Footer -->
+                  <div
+                    class="px-5 py-4 border-t border-slate-200/60 dark:border-white/10 flex justify-end gap-2"
+                  >
+                    <label
+                      for="supported-toggle"
+                      class="inline-flex items-center justify-center rounded-xl border border-slate-300/70 bg-slate-50/60 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 cursor-pointer dark:bg-white/10 dark:text-white dark:hover:bg-white/15 dark:border-white/10"
+                    >
+                      Tutup
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- STEP 3 -->
+          <li>
+            <article
+              class="min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-emerald-100/70 via-emerald-50/50 to-cyan-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-emerald-200/60 shadow-sm p-6 flex flex-col"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200 font-semibold"
+                >
+                  3
+                </div>
+                <h3
+                  class="text-xl font-semibold text-emerald-800 dark:text-emerald-100"
+                >
+                  Unggah &amp; Validasi
+                </h3>
+              </div>
+
+              <p class="mt-2 text-sm text-slate-700 dark:text-slate-200">
+                Sistem memeriksa header, tipe data, dan kategori tidak dikenal.
+              </p>
+
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a
+                  href="#upload-csv"
+                  class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 px-4 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                  >Buka Form Upload</a
+                >
+                <span
+                  class="inline-flex items-center rounded-xl px-3 py-2 text-[12px] font-medium text-emerald-800 bg-emerald-100/70 ring-1 ring-emerald-200/60 dark:text-emerald-200 dark:bg-white/10 dark:ring-white/10"
+                  >Validasi real-time</span
+                >
+              </div>
+              <p class="mt-3 mb-0 text-xs text-slate-600 dark:text-slate-300">
+                File akhir: <code>.csv</code> UTF-8, koma, maks. 5MB / 50k
+                baris.
+              </p>
+            </article>
+          </li>
+        </ol>
+
+        <!-- ROW 3: Struktur lengkap -->
+        <div
+          id="struktur-lengkap"
+          class="mt-10 rounded-2xl p-6 bg-slate-100/70 dark:bg-white/5 backdrop-blur ring-1 ring-slate-200/70 dark:ring-white/10"
+        >
+          <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
+            Struktur Kolom Lengkap
+          </h3>
+          <div class="mt-4 grid gap-6 sm:grid-cols-2 text-sm">
+            <ul class="space-y-1.5 text-slate-700 dark:text-slate-200">
+              <li>Age</li>
+              <li>DailyRate</li>
+              <li>Department</li>
+              <li>DistanceFromHome</li>
+              <li>EnvironmentSatisfaction</li>
+              <li>JobInvolvement</li>
+              <li>JobLevel</li>
+              <li>JobRole</li>
+              <li>JobSatisfaction</li>
+              <li>MaritalStatus</li>
+            </ul>
+            <ul class="space-y-1.5 text-slate-700 dark:text-slate-200">
+              <li>MonthlyIncome</li>
+              <li>OverTime</li>
+              <li>StockOptionLevel</li>
+              <li>TotalWorkingYears</li>
+              <li>TrainingTimesLastYear</li>
+              <li>WorkLifeBalance</li>
+              <li>YearsAtCompany</li>
+              <li>YearsInCurrentRole</li>
+              <li>YearsWithCurrManager</li>
+              <li class="text-slate-500 dark:text-slate-400">
+                EmployeeName <span class="text-xs">(opsional)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div
+        class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent dark:via-white/30"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- Model -->
+    <section
+      id="model"
+      class="relative scroll-mt-24 py-20 text-slate-800 overflow-hidden bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+      aria-labelledby="model-title"
+    >
+      <!-- texture + glows (match hero) -->
+      <div
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        aria-hidden="true"
+      ></div>
+
+      <div class="mx-auto max-w-6xl px-6">
+        <h2
+          id="model-title"
+          class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+        >
+          Model
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-cyan-200 dark:to-yellow-200"
+            >yang Digunakan</span
+          >
+        </h2>
+        <p class="mt-3 text-center text-slate-700 dark:text-slate-200">
+          Peringkat berdasarkan
+          <span class="font-semibold">Accuracy</span> &amp;
+          <span class="font-semibold">F1</span>;
+          <span class="whitespace-nowrap">AUC</span> sebagai pemeriksaan
+          tambahan.
+        </p>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-12 items-stretch">
+          <!-- Best model (lebih lebar) -->
+          <article
+            class="relative lg:col-span-7 rounded-2xl p-6 shadow-sm backdrop-blur bg-gradient-to-br from-amber-100/70 via-amber-50/50 to-yellow-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 ring-1 ring-amber-200/70"
+          >
+            <span
+              class="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full bg-amber-100/80 text-amber-900 px-2 py-1 text-[11px] font-bold ring-1 ring-amber-200"
+              >🏆 Best Model</span
+            >
+
+            <div class="flex items-start gap-3">
+              <span
+                class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100/60"
+              ></span>
+              <div>
+                <h3
+                  class="text-xl font-semibold text-emerald-700 dark:text-emerald-300"
+                >
+                  🌳 Random Forest
+                </h3>
+                <p class="mt-1 text-slate-600 dark:text-slate-300">
+                  Performa keseluruhan terbaik pada data kami.
+                </p>
+              </div>
+            </div>
+
+            <!-- KPI pills -->
+            <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div
+                class="rounded-lg px-3 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+              >
+                <div
+                  class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                >
+                  ACCURACY
+                </div>
+                <div class="text-base font-bold text-slate-900 dark:text-white">
+                  86.73%
+                </div>
+              </div>
+              <div
+                class="rounded-lg px-3 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+              >
+                <div
+                  class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                >
+                  F1 SCORE
+                </div>
+                <div class="text-base font-bold text-slate-900 dark:text-white">
+                  84.84%
+                </div>
+              </div>
+              <div
+                class="rounded-lg px-3 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+              >
+                <div
+                  class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                >
+                  CV (MEAN)
+                </div>
+                <div class="text-base font-bold text-slate-900 dark:text-white">
+                  90.45%
+                </div>
+              </div>
+              <div
+                class="rounded-lg px-3 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+              >
+                <div
+                  class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                >
+                  AUC
+                </div>
+                <div class="text-base font-bold text-slate-900 dark:text-white">
+                  0.740
+                </div>
+              </div>
+            </div>
+
+            <!-- Bars -->
+            <div class="mt-5 space-y-3">
+              <div>
+                <div
+                  class="flex justify-between text-[13px] text-slate-700 dark:text-slate-300"
+                >
+                  <span>Accuracy</span><span>86.73%</span>
+                </div>
+                <div
+                  class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="86.73"
+                  aria-label="Accuracy RF"
+                >
+                  <div
+                    class="h-2 rounded-full bg-emerald-500"
+                    style="width: 86.73%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="flex justify-between text-[13px] text-slate-700 dark:text-slate-300"
+                >
+                  <span>F1</span><span>84.84%</span>
+                </div>
+                <div
+                  class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="84.84"
+                  aria-label="F1 RF"
+                >
+                  <div
+                    class="h-2 rounded-full bg-blue-500"
+                    style="width: 84.84%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div
+                  class="flex justify-between text-[13px] text-slate-700 dark:text-slate-300"
+                >
+                  <span>AUC</span><span>0.740</span>
+                </div>
+                <div
+                  class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="74"
+                  aria-label="AUC RF"
+                >
+                  <div
+                    class="h-2 rounded-full bg-indigo-500"
+                    style="width: 74%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a
+                href="#prediksi"
+                class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 px-4 py-2.5 text-sm font-semibold shadow-lg ring-1 ring-black/5 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300"
+              >
+                Gunakan Model Ini
+              </a>
+              <a
+                href="#fitur-data"
+                class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 dark:text-white ring-1 ring-slate-300/70 dark:ring-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              >
+                Lihat Fitur →
+              </a>
+            </div>
+          </article>
+
+          <!-- Candidates (grid tinggi-rata) -->
+          <div
+            class="lg:col-span-5 grid gap-6 sm:grid-cols-2 [grid-auto-rows:minmax(0,1fr)]"
+          >
+            <!-- Gradient Boosting -->
+            <article
+              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+            >
+              <h3
+                class="text-lg font-semibold text-pink-700 dark:text-pink-300"
+              >
+                🚀 Gradient Boosting
+              </h3>
+              <div class="mt-3 grid grid-cols-2 gap-3">
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    ACC
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    85.37%
+                  </div>
+                </div>
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    F1
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    84.09%
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div
+                  class="flex justify-between text-[13px] text-slate-700 dark:text-slate-300"
+                >
+                  <span>AUC</span><span>0.743</span>
+                </div>
+                <div
+                  class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="74.3"
+                  aria-label="AUC GB"
+                >
+                  <div
+                    class="h-2 rounded-full bg-indigo-500"
+                    style="width: 74.3%"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="mt-auto pt-3 text-[12px] text-slate-500 dark:text-slate-400"
+              >
+                CV (mean): 90.45%
+              </div>
+            </article>
+
+            <!-- SVM -->
+            <article
+              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+            >
+              <h3
+                class="text-lg font-semibold text-purple-700 dark:text-purple-300"
+              >
+                ⚙️ Support Vector Machine
+              </h3>
+              <div class="mt-3 grid grid-cols-2 gap-3">
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    ACC
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    82.31%
+                  </div>
+                </div>
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    F1
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    82.31%
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div
+                  class="flex justify-between text-[13px] text-slate-700 dark:text-slate-300"
+                >
+                  <span>AUC</span><span>0.724</span>
+                </div>
+                <div
+                  class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="72.4"
+                  aria-label="AUC SVM"
+                >
+                  <div
+                    class="h-2 rounded-full bg-indigo-500"
+                    style="width: 72.4%"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="mt-auto pt-3 text-[12px] text-slate-500 dark:text-slate-400"
+              >
+                CV (mean): 90.45%
+              </div>
+            </article>
+
+            <!-- Logistic Regression -->
+            <article
+              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+            >
+              <h3
+                class="text-lg font-semibold text-blue-700 dark:text-blue-300"
+              >
+                📐 Logistic Regression
+              </h3>
+              <div class="mt-3 grid grid-cols-2 gap-3">
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    ACC
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    79.25%
+                  </div>
+                </div>
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    F1
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    81.78%
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div
+                  class="flex justify-between text-[13px] text-slate-700 dark:text-slate-300"
+                >
+                  <span>AUC</span><span>0.748</span>
+                </div>
+                <div
+                  class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="74.8"
+                  aria-label="AUC LR"
+                >
+                  <div
+                    class="h-2 rounded-full bg-indigo-500"
+                    style="width: 74.8%"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="mt-auto pt-3 text-[12px] text-slate-500 dark:text-slate-400"
+              >
+                CV (mean): 90.45%
+              </div>
+            </article>
+
+            <!-- KNN -->
+            <article
+              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+            >
+              <h3
+                class="text-lg font-semibold text-orange-700 dark:text-orange-300"
+              >
+                📍 K-Nearest Neighbors
+              </h3>
+              <div class="mt-3 grid grid-cols-2 gap-3">
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    ACC
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    69.04%
+                  </div>
+                </div>
+                <div
+                  class="rounded-lg px-2.5 py-2 text-center ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10"
+                >
+                  <div
+                    class="text-[10px] font-semibold tracking-wide text-slate-500 dark:text-slate-400"
+                  >
+                    F1
+                  </div>
+                  <div class="text-sm font-bold text-slate-900 dark:text-white">
+                    73.57%
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3">
+                <div
+                  class="flex justify-between text-[13px] text-slate-700 dark:text-slate-300"
+                >
+                  <span>AUC</span><span>0.663</span>
+                </div>
+                <div
+                  class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
+                  role="progressbar"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="66.3"
+                  aria-label="AUC KNN"
+                >
+                  <div
+                    class="h-2 rounded-full bg-indigo-500"
+                    style="width: 66.3%"
+                  ></div>
+                </div>
+              </div>
+              <div
+                class="mt-auto pt-3 text-[12px] text-slate-500 dark:text-slate-400"
+              >
+                CV (mean): 90.45%
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div
+        class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/30"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- Cara Kerja -->
+    <section
+      id="cara-kerja"
+      class="relative scroll-mt-24 py-20 text-slate-800 overflow-hidden bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+      aria-labelledby="how-title"
+    >
+      <!-- texture + glows -->
+      <div
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        aria-hidden="true"
+      ></div>
+
+      <div class="mx-auto max-w-6xl px-6">
+        <h2
+          id="how-title"
+          class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+        >
+          Cara
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-cyan-200 dark:to-yellow-200"
+            >Kerja</span
+          >
+        </h2>
+        <p class="mt-3 text-center text-slate-700 dark:text-slate-200">
+          Tiga langkah sederhana dari input data hingga keputusan.
+        </p>
+
+        <!-- wrapper untuk garis konektor -->
+        <div class="relative mt-10">
+          <!-- garis konektor (desktop) -->
+          <div
+            class="pointer-events-none absolute top-8 left-24 right-24 hidden md:block"
+          >
+            <div
+              class="h-0.5 bg-gradient-to-r from-indigo-200 via-slate-200 to-cyan-200 dark:from-white/10 dark:via-white/10 dark:to-white/10"
+            ></div>
+          </div>
+
+          <div
+            class="grid gap-6 md:grid-cols-3 items-stretch"
+            role="list"
+            aria-label="Langkah proses"
+          >
+            <!-- Step 1 -->
+            <article
+              role="listitem"
+              class="group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 transition-shadow hover:shadow-md"
+            >
+              <header class="flex flex-col items-center text-center">
+                <span
+                  class="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-bold ring-4 ring-white/70 dark:ring-white/20"
+                  >1</span
+                >
+                <svg
+                  aria-hidden="true"
+                  class="mt-3 h-8 w-8 text-blue-600"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5z"
+                  />
+                  <path d="M14 3v4a2 2 0 0 0 2 2h4" class="opacity-60" />
+                </svg>
+                <h3
+                  class="mt-3 text-lg font-semibold text-slate-900 dark:text-white"
+                >
+                  Kumpulkan Data
+                </h3>
+                <p class="mt-1 text-slate-600 dark:text-slate-300">
+                  Masukkan usia, jabatan, pendapatan, dll. atau gunakan
+                  <a
+                    href="#fitur"
+                    class="underline decoration-blue-300 underline-offset-2 hover:text-blue-700 dark:hover:text-cyan-300"
+                    >Template CSV</a
+                  >.
+                </p>
+              </header>
+              <footer
+                class="mt-auto pt-4 border-t border-slate-200/60 dark:border-white/10 text-[12px] text-slate-500 dark:text-slate-400"
+              >
+                Format: CSV UTF-8, delimiter koma.
+              </footer>
+            </article>
+
+            <!-- Step 2 -->
+            <article
+              role="listitem"
+              class="group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 transition-shadow hover:shadow-md"
+            >
+              <header class="flex flex-col items-center text-center">
+                <span
+                  class="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-white text-sm font-bold ring-4 ring-white/70 dark:ring-white/20"
+                  >2</span
+                >
+                <svg
+                  aria-hidden="true"
+                  class="mt-3 h-8 w-8 text-emerald-600"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3z" />
+                  <path d="M12 7v5l4 2" class="opacity-60" />
+                </svg>
+                <h3
+                  class="mt-3 text-lg font-semibold text-slate-900 dark:text-white"
+                >
+                  Analisis AI
+                </h3>
+                <p class="mt-1 text-slate-600 dark:text-slate-300">
+                  Model memproses data &amp; menghasilkan prediksi risiko
+                  attrition + confidence.
+                </p>
+              </header>
+              <footer
+                class="mt-auto pt-4 border-t border-slate-200/60 dark:border-white/10 text-[12px] text-slate-500 dark:text-slate-400"
+              >
+                Akurasi &amp; F1 divalidasi cross-val.
+              </footer>
+            </article>
+
+            <!-- Step 3 -->
+            <article
+              role="listitem"
+              class="group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 transition-shadow hover:shadow-md"
+            >
+              <header class="flex flex-col items-center text-center">
+                <span
+                  class="relative z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-rose-600 text-white text-sm font-bold ring-4 ring-white/70 dark:ring-white/20"
+                  >3</span
+                >
+                <svg
+                  aria-hidden="true"
+                  class="mt-3 h-8 w-8 text-rose-600"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M4 19h16v2H4zM5 4h4v10H5zM11 8h4v6h-4zM17 6h4v8h-4z"
+                  />
+                </svg>
+                <h3
+                  class="mt-3 text-lg font-semibold text-slate-900 dark:text-white"
+                >
+                  Ambil Keputusan
+                </h3>
+                <p class="mt-1 text-slate-600 dark:text-slate-300">
+                  Gunakan rekomendasi retensi dan unduh laporan/hasil untuk
+                  dibagikan.
+                </p>
+              </header>
+              <footer
+                class="mt-auto pt-4 border-t border-slate-200/60 dark:border-white/10 text-[12px] text-slate-500 dark:text-slate-400"
+              >
+                Tersedia ringkasan &amp; export.
+              </footer>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="#prediksi"
+            class="inline-flex items-center justify-center rounded-xl px-8 py-3 font-semibold shadow-lg ring-1 ring-black/5 bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300"
+          >
+            Mulai Prediksi
+          </a>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div
+        class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/30"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- Form Prediksi Single -->
+    <section
+      id="prediksi"
+      class="relative py-20 overflow-hidden text-slate-800 bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+    >
+      <!-- dekorasi bg -->
+      <div
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+      ></div>
+      <div
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+      ></div>
+
+      <div class="mx-auto max-w-5xl px-6">
+        <header class="text-center space-y-3 mb-10">
+          <h2
+            class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Form
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-cyan-200 dark:to-yellow-200"
+              >AttritionPredict</span
+            >
+          </h2>
+          <p class="text-slate-600 dark:text-slate-200 text-sm md:text-base">
+            Isi 4 langkah singkat, lalu review dulu sebelum prediksi.
+          </p>
+        </header>
+
+        <!-- Stepper: 5 langkah -->
+        <!-- Stepper: 5 langkah -->
+        <div
+          class="relative mb-6"
+          role="list"
+          aria-label="Langkah Form Prediksi"
+        >
+          <!-- garis belakang, pastikan tidak intercept klik -->
+          <div
+            class="absolute inset-x-0 top-4 h-1 rounded-full bg-slate-200 pointer-events-none"
+          ></div>
+
+          <ol class="relative z-10 grid grid-cols-5 gap-2">
+            <li
+              class="step text-center"
+              data-step="1"
+              role="listitem"
+              aria-current="step"
+            >
+              <div
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-bold ring-4 ring-white"
+              >
+                1
+              </div>
+              <div class="mt-2 text-xs font-medium text-slate-700">
+                Data Pribadi
+              </div>
+            </li>
+
+            <li class="step text-center" data-step="2" role="listitem">
+              <div
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+              >
+                2
+              </div>
+              <div class="mt-2 text-xs font-medium text-slate-700">
+                Pekerjaan
+              </div>
+            </li>
+
+            <li class="step text-center" data-step="3" role="listitem">
+              <div
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+              >
+                3
+              </div>
+              <div class="mt-2 text-xs font-medium text-slate-700">
+                Finansial
+              </div>
+            </li>
+
+            <li class="step text-center" data-step="4" role="listitem">
+              <div
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+              >
+                4
+              </div>
+              <div class="mt-2 text-xs font-medium text-slate-700">
+                Work-Life
+              </div>
+            </li>
+
+            <li class="step text-center" data-step="5" role="listitem">
+              <div
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+              >
+                5
+              </div>
+              <div class="mt-2 text-xs font-medium text-slate-700">Review</div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Kartu form -->
+        <form
+          id="predictForm"
+          class="mx-auto max-w-4xl rounded-2xl border p-6 md:p-8 shadow-sm space-y-6 backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 border-transparent"
+          aria-describedby="formHelp"
+        >
+          <p id="formHelp" class="sr-only">
+            Progress otomatis tersimpan. Pakai tombol Selanjutnya/Sebelumnya
+            untuk pindah langkah.
+          </p>
+
+          <!-- STEP 1 -->
+          <fieldset class="form-step" data-step="1">
+            <legend
+              class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
+            >
+              👤 Data Pribadi
+            </legend>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="md:col-span-2">
+                <label
+                  for="EmployeeName"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Nama
+                  <span class="text-slate-400 font-normal">(opsional)</span>
+                </label>
+                <input
+                  id="EmployeeName"
+                  name="EmployeeName"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Masukkan nama karyawan"
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="Age"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Usia <span class="text-slate-400 text-xs">(18–60)</span>
+                  <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="Age"
+                  name="Age"
+                  type="number"
+                  min="18"
+                  max="60"
+                  required
+                  placeholder="Contoh: 28"
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                  aria-describedby="ageHelp"
+                />
+                <p
+                  id="ageHelp"
+                  class="mt-1 text-xs text-rose-600 hidden"
+                  role="alert"
+                >
+                  Usia harus antara 18–60 tahun.
+                </p>
+              </div>
+
+              <div>
+                <label
+                  for="MaritalStatus"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Status Pernikahan <span class="text-rose-500">*</span>
+                </label>
+
+                <select
+                  id="MaritalStatus"
+                  name="MaritalStatus"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/60 ring-1 ring-slate-300/60 bg-slate-900/5 hover:bg-slate-900/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/10 dark:hover:bg-white/15 dark:text-white dark:border-white/10 dark:ring-white/10"
+                >
+                  <option value="">Pilih</option>
+                  <option>Married</option>
+                  <option>Single</option>
+                  <option>Divorced</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- STEP 2 -->
+          <fieldset class="form-step hidden" data-step="2">
+            <legend
+              class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
+            >
+              💼 Pekerjaan
+            </legend>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label
+                  for="Department"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Departemen <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="Department"
+                  name="Department"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Human Resources</option>
+                  <option>Research & Development</option>
+                  <option>Sales</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="JobRole"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Job Role <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="JobRole"
+                  name="JobRole"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Healthcare Representative</option>
+                  <option>Human Resources</option>
+                  <option>Laboratory Technician</option>
+                  <option>Manager</option>
+                  <option>Manufacturing Director</option>
+                  <option>Research Director</option>
+                  <option>Research Scientist</option>
+                  <option>Sales Executive</option>
+                  <option>Sales Representative</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="JobLevel"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Level Jabatan <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="JobLevel"
+                  name="JobLevel"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Level 1</option>
+                  <option>Level 2</option>
+                  <option>Level 3</option>
+                  <option>Level 4</option>
+                  <option>Level 5</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="JobInvolvement"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Keterlibatan Kerja <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="JobInvolvement"
+                  name="JobInvolvement"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                  <option>Very High</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="JobSatisfaction"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Kepuasan Kerja <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="JobSatisfaction"
+                  name="JobSatisfaction"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Very Dissatisfied</option>
+                  <option>Dissatisfied</option>
+                  <option>Satisfied</option>
+                  <option>Very Satisfied</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- STEP 3 -->
+          <fieldset class="form-step hidden" data-step="3">
+            <legend
+              class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
+            >
+              💰 Finansial & Lainnya
+            </legend>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label
+                  for="MonthlyIncome"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Pendapatan Bulanan <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="MonthlyIncome"
+                  name="MonthlyIncome"
+                  type="number"
+                  required
+                  placeholder="Contoh: 8500000"
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="DailyRate"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Daily Rate <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="DailyRate"
+                  name="DailyRate"
+                  type="number"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="StockOptionLevel"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Level Opsi Saham <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="StockOptionLevel"
+                  name="StockOptionLevel"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Level 0</option>
+                  <option>Level 1</option>
+                  <option>Level 2</option>
+                  <option>Level 3</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- STEP 4 -->
+          <fieldset class="form-step hidden" data-step="4">
+            <legend
+              class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
+            >
+              ⚖️ Work-Life
+            </legend>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label
+                  for="DistanceFromHome"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Jarak dari Rumah (km) <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="DistanceFromHome"
+                  name="DistanceFromHome"
+                  type="number"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="EnvironmentSatisfaction"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Kepuasan Lingkungan <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="EnvironmentSatisfaction"
+                  name="EnvironmentSatisfaction"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Very Dissatisfied</option>
+                  <option>Dissatisfied</option>
+                  <option>Satisfied</option>
+                  <option>Very Satisfied</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="OverTime"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Lembur <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="OverTime"
+                  name="OverTime"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>No</option>
+                  <option>Yes</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="TotalWorkingYears"
+                  class="block text sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Total Tahun Kerja <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="TotalWorkingYears"
+                  name="TotalWorkingYears"
+                  type="number"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="TrainingTimesLastYear"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Pelatihan Tahun Lalu <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="TrainingTimesLastYear"
+                  name="TrainingTimesLastYear"
+                  type="number"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="WorkLifeBalance"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Work Life Balance <span class="text-rose-500">*</span>
+                </label>
+                <select
+                  id="WorkLifeBalance"
+                  name="WorkLifeBalance"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="">Pilih</option>
+                  <option>Bad</option>
+                  <option>Good</option>
+                  <option>Better</option>
+                  <option>Best</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="YearsAtCompany"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Tahun di Perusahaan <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="YearsAtCompany"
+                  name="YearsAtCompany"
+                  type="number"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="YearsInCurrentRole"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Tahun di Role Saat Ini <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="YearsInCurrentRole"
+                  name="YearsInCurrentRole"
+                  type="number"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="YearsWithCurrManager"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                >
+                  Tahun dengan Manager Saat Ini
+                  <span class="text-rose-500">*</span>
+                </label>
+                <input
+                  id="YearsWithCurrManager"
+                  name="YearsWithCurrManager"
+                  type="number"
+                  required
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- STEP 5 (REVIEW) -->
+          <fieldset
+            class="form-step hidden text-slate-800 dark:text-slate-100"
+            data-step="5"
+            aria-describedby="reviewHint"
+          >
+            <legend
+              class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
+            >
+              🧾 Review & Konfirmasi
+            </legend>
+            <p
+              id="reviewHint"
+              class="mt-1 text-sm text-slate-600 dark:text-slate-300"
+            >
+              Cek ringkasan di bawah. Klik “Ubah” bila ada yang perlu
+              diperbaiki.
+            </p>
+
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- Personal -->
+              <section
+                class="rounded-xl border border-slate-200 p-4 ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10 text-slate-800 dark:text-slate-100"
+              >
+                <header class="flex items-center justify-between">
+                  <h4 class="font-semibold text-slate-900 dark:text-cyan-200">
+                    Data Pribadi
+                  </h4>
+                  <button
+                    type="button"
+                    class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
+                    data-goto-step="1"
+                  >
+                    Ubah
+                  </button>
+                </header>
+                <dl
+                  id="review-personal"
+                  class="mt-3 text-sm space-y-2 text-slate-700 dark:text-slate-200"
+                ></dl>
+              </section>
+
+              <!-- Job -->
+              <section
+                class="rounded-xl border border-slate-200 p-4 ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10 text-slate-800 dark:text-slate-100"
+              >
+                <header class="flex items-center justify-between">
+                  <h4 class="font-semibold text-slate-900 dark:text-cyan-200">
+                    Pekerjaan
+                  </h4>
+                  <button
+                    type="button"
+                    class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
+                    data-goto-step="2"
+                  >
+                    Ubah
+                  </button>
+                </header>
+                <dl
+                  id="review-job"
+                  class="mt-3 text-sm space-y-2 text-slate-700 dark:text-slate-200"
+                ></dl>
+              </section>
+
+              <!-- Finance -->
+              <section
+                class="rounded-xl border border-slate-200 p-4 ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10 text-slate-800 dark:text-slate-100"
+              >
+                <header class="flex items-center justify-between">
+                  <h4 class="font-semibold text-slate-900 dark:text-cyan-200">
+                    Finansial
+                  </h4>
+                  <button
+                    type="button"
+                    class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
+                    data-goto-step="3"
+                  >
+                    Ubah
+                  </button>
+                </header>
+                <dl
+                  id="review-fin"
+                  class="mt-3 text-sm space-y-2 text-slate-700 dark:text-slate-200"
+                ></dl>
+              </section>
+
+              <!-- Work-Life -->
+              <section
+                class="rounded-xl border border-slate-200 p-4 ring-1 ring-slate-200/60 dark:ring-white/10 bg-slate-900/5 dark:bg-white/10 text-slate-800 dark:text-slate-100"
+              >
+                <header class="flex items-center justify-between">
+                  <h4 class="font-semibold text-slate-900 dark:text-cyan-200">
+                    Work-Life
+                  </h4>
+                  <button
+                    type="button"
+                    class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
+                    data-goto-step="4"
+                  >
+                    Ubah
+                  </button>
+                </header>
+                <dl
+                  id="review-life"
+                  class="mt-3 text-sm space-y-2 text-slate-700 dark:text-slate-200"
+                ></dl>
+              </section>
+            </div>
+          </fieldset>
+
+          <!-- Actions -->
+          <div
+            class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2"
+          >
+            <button
+              type="button"
+              id="prevBtn"
+              class="order-1 sm:order-none inline-flex items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-800 dark:text-white bg-slate-900/5 hover:bg-slate-900/10 ring-1 ring-slate-300/70 dark:ring-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500 hidden"
+            >
+              ‹ Sebelumnya
+            </button>
+
+            <div
+              id="loadingSpinner"
+              class="hidden order-3 sm:order-none flex items-center gap-2 text-sm text-slate-500 dark:text-slate-300"
+            >
+              <svg
+                class="h-4 w-4 animate-spin"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4A4 4 0 008 12H4z"
+                ></path>
+              </svg>
+              Memproses…
+            </div>
+
+            <div class="flex items-center gap-3 order-2 sm:order-none">
+              <button
+                type="button"
+                id="nextBtn"
+                class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                Selanjutnya ›
+              </button>
+              <button
+                type="submit"
+                id="submitBtn"
+                class="hidden inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              >
+                Konfirmasi & Prediksi
+              </button>
+            </div>
+          </div>
+
+          <div id="singleResult" class="mt-6" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Upload CSV -->
+    <section
+      id="upload-csv"
+      class="relative py-20 overflow-hidden text-slate-800 bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+    >
+      <!-- texture + glows -->
+      <div
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        aria-hidden="true"
+      ></div>
+
+      <div class="mx-auto max-w-5xl px-6">
+        <!-- Header -->
+        <header class="text-center max-w-3xl mx-auto">
+          <h2
+            class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          >
+            Upload Data CSV
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-400 dark:from-cyan-200 dark:to-yellow-200"
+            >
+              untuk Prediksi
+            </span>
+          </h2>
+          <p class="mt-2 text-slate-700 dark:text-slate-200">
+            Gunakan Template Attrition Predict lalu unggah file di bawah.
+          </p>
+        </header>
+
+        <!-- Upload Card -->
+        <form
+          id="csvForm"
+          class="mt-10 rounded-2xl p-6 md:p-8 space-y-5 shadow-xl backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+          enctype="multipart/form-data"
+          novalidate
+        >
+          <!-- Rules / badges -->
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-blue-100/60 text-blue-800 ring-1 ring-blue-200/70 dark:bg-white/10 dark:text-cyan-200 dark:ring-white/10"
+              >.csv (UTF-8)</span
+            >
+            <span
+              class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-slate-900/5 text-slate-700 ring-1 ring-slate-200/70 dark:bg-white/10 dark:text-slate-200 dark:ring-white/10"
+              >Delimiter koma</span
+            >
+            <span
+              class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-emerald-100/60 text-emerald-800 ring-1 ring-emerald-200/70 dark:bg-white/10 dark:text-emerald-200 dark:ring-white/10"
+              >≤ 5 MB</span
+            >
+            <span
+              class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-amber-100/60 text-amber-800 ring-1 ring-amber-200/70 dark:bg-white/10 dark:text-amber-200 dark:ring-white/10"
+              >≤ 50k baris</span
+            >
+            <span
+              class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-rose-100/60 text-rose-800 ring-1 ring-rose-200/70 dark:bg-white/10 dark:text-rose-200 dark:ring-white/10"
+              >Header 19 kolom (case-sensitive)</span
+            >
+          </div>
+
+          <!-- Dropzone -->
+          <fieldset>
+            <legend class="sr-only">
+              Upload Data CSV untuk Prediksi Attrition
+            </legend>
+
+            <label
+              id="csvLabel"
+              for="csvFile"
+              class="group relative flex flex-col items-center justify-center w-full h-48 rounded-2xl border-2 border-dashed border-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:bg-white/10 dark:hover:bg-white/15 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              tabindex="0"
+              role="button"
+              aria-describedby="csvHelp"
+            >
+              <!-- drag state -->
+              <span
+                class="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-cyan-400 opacity-0 group-[.is-dragover]:opacity-100 transition"
+              ></span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-12 w-12 text-cyan-500 mb-3"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 16.5a4.5 4.5 0 0 0-2-8.5 5.5 5.5 0 0 0-10.4 2.1A4 4 0 0 0 6 16.5"
+                />
+                <path d="M12 12v8m0-8-3 3m3-3 3 3" />
+              </svg>
+              <span class="text-slate-800 dark:text-white font-medium"
+                >Klik atau seret file CSV ke sini</span
+              >
+              <span class="mt-1 text-xs text-slate-500 dark:text-slate-400"
+                >Drop untuk mulai mengunggah</span
+              >
+
+              <input
+                type="file"
+                id="csvFile"
+                name="csvFile"
+                accept=".csv,text/csv"
+                class="sr-only"
+                aria-labelledby="csvLabel"
+                aria-describedby="csvHelp"
+                required
+              />
+            </label>
+
+            <p
+              id="csvHelp"
+              class="mt-2 text-sm text-slate-600 dark:text-slate-300"
+            >
+              Pastikan header sesuai template (19 kolom). Nilai kategorikal
+              harus sesuai opsi yang didukung.
+            </p>
+          </fieldset>
+
+          <!-- Selected file + actions -->
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-3"
+          >
+            <p
+              id="fileName"
+              class="text-sm text-slate-600 dark:text-slate-300"
+              aria-live="polite"
+            >
+              Belum ada file yang dipilih
+            </p>
+
+            <div class="flex items-center gap-2">
+              <button
+                id="btnChangeFile"
+                type="button"
+                class="hidden h-10 px-4 rounded-xl text-sm font-medium ring-1 ring-slate-300/70 dark:ring-white/10 bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 dark:text-white"
+              >
+                Ganti File
+              </button>
+              <button
+                id="btnClearFile"
+                type="button"
+                class="hidden h-10 px-4 rounded-xl text-sm font-medium bg-rose-100/70 text-rose-800 ring-1 ring-rose-200/70 hover:bg-rose-100 dark:bg-white/10 dark:text-rose-200 dark:ring-white/10"
+              >
+                Hapus
+              </button>
+              <button
+                id="csvSubmit"
+                type="button"
+                disabled
+                class="h-10 px-5 rounded-xl text-white text-sm font-semibold shadow-sm disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-blue-600 to-cyan-500 hover:brightness-110 focus:ring-2 focus:ring-cyan-400 focus:outline-none"
+              >
+                Proses CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Loader -->
+          <div
+            id="csvLoader"
+            class="hidden"
+            aria-live="polite"
+            aria-busy="true"
+          >
+            <div
+              class="w-full rounded-full h-3 overflow-hidden bg-slate-900/10 dark:bg-white/10"
+            >
+              <div
+                id="csvLoaderBar"
+                class="h-3 rounded-full transition-all duration-500 bg-gradient-to-r from-cyan-400 to-indigo-500"
+                style="width: 0%"
+              ></div>
+            </div>
+            <p
+              id="csvLoaderText"
+              class="text-center text-xs text-slate-600 dark:text-slate-300 mt-1"
+            >
+              Memproses CSV…
+            </p>
+          </div>
+
+          <!-- Error -->
+          <pre
+            id="csvError"
+            class="hidden rounded-xl p-3 text-sm whitespace-pre-wrap bg-rose-100/70 text-rose-800 ring-1 ring-rose-200/70 dark:bg-white/10 dark:text-rose-200 dark:ring-white/10"
+            role="alert"
+          ></pre>
+        </form>
+
+        <!-- RESULT CARD -->
+        <section id="csvResult" class="mt-10 hidden">
+          <div
+            class="rounded-2xl overflow-hidden shadow-xl backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+          >
+            <!-- Toolbar -->
+            <div
+              class="px-6 py-4 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/5 dark:bg-white/10"
+            >
+              <div
+                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-center gap-3">
+                  <h3
+                    class="text-lg sm:text-xl font-semibold text-slate-800 dark:text-white"
+                  >
+                    Hasil Prediksi CSV
+                  </h3>
+                  <span
+                    id="csvCount"
+                    class="text-[11px] bg-blue-100/70 text-blue-800 px-2 py-1 rounded-full font-semibold ring-1 ring-blue-200/70 dark:bg-white/10 dark:text-cyan-200 dark:ring-white/10"
+                    >0 baris</span
+                  >
+                </div>
+
+                <div
+                  class="w-full sm:w-auto flex flex-wrap items-center gap-2 sm:gap-3"
+                >
+                  <!-- Search -->
+                  <div class="relative flex-1 min-w-[220px] sm:w-64">
+                    <input
+                      id="csvSearch"
+                      type="text"
+                      placeholder="Cari nama / prediksi…"
+                      class="h-10 w-full pl-10 pr-9 rounded-xl text-sm outline-none bg-white/90 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                    />
+                    <svg
+                      class="w-5 h-5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    >
+                      <path
+                        d="M21 21l-4.35-4.35M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+                      />
+                    </svg>
+                    <button
+                      id="csvSearchClear"
+                      type="button"
+                      class="hidden absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-slate-500 hover:bg-slate-900/10 dark:text-slate-300 dark:hover:bg-white/10"
+                      title="Bersihkan pencarian"
+                      aria-label="Bersihkan"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <!-- Filter -->
+                  <select
+                    id="csvFilter"
+                    class="h-10 text-sm rounded-xl px-3 bg-white/90 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                    aria-label="Filter prediksi"
+                  >
+                    <option value="">Semua Prediksi</option>
+                    <option value="Karyawan Bertahan">Bertahan</option>
+                    <option value="Karyawan Mungkin Resign">Resign</option>
+                  </select>
+
+                  <!-- Sort -->
+                  <select
+                    id="csvSort"
+                    class="h-10 text-sm rounded-xl px-3 bg-white/90 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                    aria-label="Urutkan hasil"
+                  >
+                    <option value="idx-asc">Index ↑</option>
+                    <option value="idx-desc">Index ↓</option>
+                    <option value="conf-desc">Confidence ↑</option>
+                    <option value="conf-asc">Confidence ↓</option>
+                    <option value="stay-desc">% Bertahan ↑</option>
+                    <option value="stay-asc">% Bertahan ↓</option>
+                    <option value="quit-desc">% Resign ↑</option>
+                    <option value="quit-asc">% Resign ↓</option>
+                  </select>
+
+                  <!-- Reset & Download -->
+                  <button
+                    id="csvReset"
+                    type="button"
+                    class="h-10 inline-flex items-center justify-center text-sm px-4 rounded-xl bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 ring-1 ring-slate-300/70 dark:bg-white/10 dark:text-white dark:ring-white/10"
+                  >
+                    Reset
+                  </button>
+                  <button
+                    id="csvDownloadPdf"
+                    type="button"
+                    class="h-10 inline-flex items-center justify-center text-sm px-4 rounded-xl text-white bg-gradient-to-r from-blue-600 to-cyan-500 shadow-sm hover:brightness-110 focus:ring-2 focus:ring-cyan-400 focus:outline-none"
+                  >
+                    Download PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Summary KPI (inject via JS) -->
+            <div
+              id="csvSummary"
+              class="px-6 py-4 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/5 dark:bg-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3"
+            ></div>
+
+            <!-- Table -->
+            <div class="overflow-x-auto relative">
+              <table
+                class="min-w-full table-fixed text-sm text-slate-800 dark:text-slate-200"
+              >
+                <caption class="sr-only">
+                  Hasil prediksi per baris pada CSV
+                </caption>
+                <colgroup>
+                  <col style="width: 80px" />
+                  <col style="width: 260px" />
+                  <col style="width: 160px" />
+                  <col style="width: 160px" />
+                  <col style="width: 140px" />
+                  <col style="width: 140px" />
+                </colgroup>
+                <thead
+                  class="sticky top-0 z-10 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/10 backdrop-blur supports-[backdrop-filter]:bg-slate-900/10 dark:bg-white/10"
+                >
+                  <tr class="text-slate-700 dark:text-slate-200">
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Index
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Nama Karyawan
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Prediksi
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      % Bertahan
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      % Resign
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Confidence
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  id="csvResultBody"
+                  class="divide-y divide-slate-200/70 dark:divide-white/10"
+                ></tbody>
+              </table>
+
+              <!-- fade edges -->
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-transparent to-slate-900/5 dark:to-white/10"
+              ></div>
+              <div
+                class="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-transparent to-slate-900/5 dark:to-white/10"
+              ></div>
+            </div>
+
+            <!-- Pagination -->
+            <div
+              class="px-6 py-4 border-t border-slate-200/70 dark:border-white/10 bg-slate-900/5 dark:bg-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+            >
+              <div class="flex items-center gap-2">
+                <label
+                  for="csvPageSize"
+                  class="text-sm text-slate-600 dark:text-slate-300"
+                  >Baris per halaman:</label
+                >
+                <select
+                  id="csvPageSize"
+                  class="text-sm rounded-lg px-2 py-1 bg-white/90 border border-slate-300/70 focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                >
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+              <div
+                id="csvPageInfo"
+                class="text-sm text-slate-600 dark:text-slate-300"
+              >
+                Menampilkan 0–0 dari 0
+              </div>
+              <div id="csvPagination" class="flex items-center gap-1">
+                <button
+                  id="csvFirst"
+                  class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
+                  title="Halaman pertama"
+                >
+                  «
+                </button>
+                <button
+                  id="csvPrev"
+                  class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
+                  title="Sebelumnya"
+                >
+                  ‹
+                </button>
+                <div
+                  id="csvPaginationPages"
+                  class="flex items-center gap-1"
+                ></div>
+                <button
+                  id="csvNext"
+                  class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
+                  title="Berikutnya"
+                >
+                  ›
+                </button>
+                <button
+                  id="csvLast"
+                  class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
+                  title="Halaman terakhir"
+                >
+                  »
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- divider -->
+      <div
+        class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/30"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- Toast container -->
+    <div
+      id="toast"
+      class="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] hidden w-full max-w-md px-4"
+    >
+      <!-- JS kamu bisa inject item seperti:
+  <div role="status" class="pointer-events-auto mb-2 flex items-start gap-3 rounded-2xl px-4 py-3 shadow-xl
+                            backdrop-blur ring-1
+                            bg-white/90 text-slate-900 ring-slate-200/80
+                            dark:bg-white/10 dark:text-white dark:ring-white/10">
+    <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">✔</span>
+    <div class="text-sm">
+      <div class="font-semibold">Berhasil</div>
+      <p class="opacity-90">CSV terunggah.</p>
+    </div>
+    <button class="ml-auto shrink-0 rounded-md px-2 py-1 text-xs text-slate-500 hover:bg-slate-900/5 dark:text-slate-300 dark:hover:bg-white/10">Tutup</button>
+  </div>
+  -->
+    </div>
+
+    <!-- Back to top -->
+    <button
+      id="backToTop"
+      type="button"
+      title="Kembali ke atas"
+      aria-label="Kembali ke atas"
+      onclick="window.scrollTo({top:0,behavior:'smooth'})"
+      class="fixed bottom-6 right-6 z-50 hidden p-3 rounded-full shadow-lg bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 ring-1 ring-black/5 hover:translate-y-[-2px] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-yellow-300"
+    >
+      ↑
+    </button>
+    <!-- Footer -->
+    <footer
+      class="relative mt-0 -mt-px text-white overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+    >
+      <!-- texture + glows -->
+      <div
+        class="absolute inset-0 opacity-15 mix-blend-screen bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')]"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -top-20 -right-24 w-[34rem] h-[34rem] rounded-full blur-3xl opacity-25 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-24 -left-20 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-20 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        aria-hidden="true"
+      ></div>
+
+      <!-- top divider (rapetin seam) -->
+      <div
+        class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/30"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative mx-auto max-w-7xl px-6 py-8">
+        <div
+          class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p class="text-white/90">
+            &copy; 2025 <span class="font-semibold">AttritionPredict</span>. All
+            rights reserved.
+          </p>
+          <div class="flex items-center gap-3 text-sm">
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 ring-1 ring-white/15"
+            >
+              🛡️ <span class="text-white/90">Data terenkripsi</span>
+            </span>
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 ring-1 ring-white/15"
+            >
+              ⚡ <span class="text-white/90">Prediksi &lt; 1 detik*</span>
+            </span>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-white/70">
+          Dibuat untuk HR yang lebih cerdas
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+  </body>
+</html>

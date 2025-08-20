@@ -1,0 +1,143 @@
+html {
+  scroll-behavior: smooth;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+.animate-fadeInRight {
+  animation: fadeInRight 0.8s ease-out forwards;
+} /* Tentang Animations*/
+.fade-left,
+.fade-right {
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+.fade-left {
+  transform: translateX(-30px);
+}
+.fade-right {
+  transform: translateX(30px);
+}
+.show.fade-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+.show.fade-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+.tooltip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted #999;
+}
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: 125%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  font-size: 0.75rem;
+  z-index: 10;
+}
+.tooltip:hover::after {
+  opacity: 1;
+} /* Prefer-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+} /* Utility kecil untuk sr-only focus */
+.sr-skip:focus {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  z-index: 1000;
+  background: #2563eb;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  outline: 2px solid #1d4ed8;
+}
+
+/* Backdrop dialog (di luar Tailwind) */
+#supported-modal::backdrop {
+  background: rgb(2 6 23 / 0.45); /* slate-950/45 */
+}
+@media (prefers-color-scheme: dark) {
+  select option,
+  select optgroup {
+    background-color: #0f172a; /* slate-900 */
+    color: #ffffff;
+  }
+}
+
+#review-personal dt,
+#review-job dt,
+#review-fin dt,
+#review-life dt {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+#review-personal dd,
+#review-job dd,
+#review-fin dd,
+#review-life dd {
+  color: #fff !important;
+  opacity: 1 !important;
+}
