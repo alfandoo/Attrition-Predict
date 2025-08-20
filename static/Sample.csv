@@ -1,0 +1,101 @@
+EmployeeName,Age,DailyRate,Department,DistanceFromHome,EnvironmentSatisfaction,JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus,MonthlyIncome,OverTime,StockOptionLevel,TotalWorkingYears,TrainingTimesLastYear,WorkLifeBalance,YearsAtCompany,YearsInCurrentRole,YearsWithCurrManager
+Ahmad Saputra,27,1042,Human Resources,26,Very Satisfied,High,Level 3,Manufacturing Director,Very Dissatisfied,Married,5889,Yes,Level 0,2,4,Better,19,10,1
+Putri Wijaya,59,199,Human Resources,29,Very Dissatisfied,High,Level 5,Human Resources,Dissatisfied,Divorced,6857,No,Level 0,12,0,Better,15,8,13
+Nadia Lestari,44,820,Sales,15,Very Satisfied,Low,Level 1,Sales Executive,Very Satisfied,Divorced,2149,No,Level 1,37,1,Good,12,4,6
+Budi Lestari,59,1428,Human Resources,28,Dissatisfied,High,Level 1,Manager,Very Satisfied,Single,2232,No,Level 1,3,3,Better,17,12,17
+Siti Purnama,30,538,Sales,18,Dissatisfied,High,Level 1,Manager,Very Dissatisfied,Single,1348,No,Level 1,40,5,Good,14,6,3
+Dewi Nuraini,19,1079,Human Resources,31,Very Satisfied,Medium,Level 4,Research Scientist,Very Dissatisfied,Single,8241,No,Level 0,7,6,Best,8,1,0
+Zahra Santoso,31,108,Sales,7,Dissatisfied,High,Level 5,Research Scientist,Very Dissatisfied,Divorced,12406,No,Level 0,7,5,Better,16,0,8
+Budi Lestari,35,1212,Sales,24,Dissatisfied,Medium,Level 2,Laboratory Technician,Dissatisfied,Divorced,4761,No,Level 0,35,2,Good,9,8,7
+Agus Syahputra,41,381,Research & Development,4,Very Satisfied,High,Level 2,Research Director,Very Satisfied,Divorced,4669,No,Level 1,36,4,Good,10,3,10
+Budi Maulana,27,1331,Human Resources,3,Satisfied,Low,Level 1,Manager,Very Dissatisfied,Divorced,2140,No,Level 1,25,1,Better,9,2,5
+Budi Wijaya,24,1349,Sales,29,Satisfied,Medium,Level 3,Sales Representative,Dissatisfied,Married,4745,No,Level 0,25,2,Better,3,3,3
+Hadi Prasetyo,58,1113,Sales,15,Very Satisfied,High,Level 5,Research Director,Very Dissatisfied,Married,15966,No,Level 0,16,6,Better,3,3,1
+Hadi Saputra,52,206,Sales,40,Satisfied,Very High,Level 4,Manager,Satisfied,Divorced,8268,No,Level 0,22,6,Better,0,0,0
+Rafi Lestari,48,683,Research & Development,20,Satisfied,High,Level 3,Manager,Dissatisfied,Single,6468,Yes,Level 1,13,1,Better,15,0,3
+Dimas Purnama,52,718,Research & Development,15,Dissatisfied,Low,Level 3,Healthcare Representative,Satisfied,Divorced,6077,No,Level 2,14,5,Bad,16,12,16
+Gita Santoso,44,945,Research & Development,15,Satisfied,Low,Level 2,Manager,Dissatisfied,Married,4594,No,Level 2,30,5,Bad,5,3,2
+Agus Kusuma,50,1051,Research & Development,33,Satisfied,Very High,Level 4,Sales Executive,Very Satisfied,Married,9080,No,Level 3,21,6,Bad,14,2,11
+Zahra Ramadhan,49,1151,Research & Development,17,Satisfied,Medium,Level 1,Sales Executive,Dissatisfied,Married,1977,No,Level 0,25,6,Good,7,5,5
+Bayu Permata,26,908,Human Resources,32,Very Satisfied,High,Level 2,Sales Executive,Dissatisfied,Single,5806,Yes,Level 2,32,1,Best,1,1,0
+Fajar Herlina,20,830,Research & Development,20,Dissatisfied,Medium,Level 3,Manager,Satisfied,Divorced,3618,No,Level 0,8,0,Better,5,3,5
+Hadi Saputra,38,752,Sales,40,Very Dissatisfied,Very High,Level 3,Sales Executive,Satisfied,Married,7029,No,Level 3,3,3,Good,7,1,7
+Ahmad Kusuma,38,279,Research & Development,9,Very Dissatisfied,Medium,Level 1,Manufacturing Director,Very Satisfied,Divorced,1341,No,Level 2,20,0,Good,6,2,0
+Elang Aulia,25,348,Human Resources,17,Very Satisfied,High,Level 2,Research Scientist,Very Satisfied,Married,5361,No,Level 0,34,4,Good,15,7,4
+Eka Wijaya,57,1055,Research & Development,15,Very Dissatisfied,Medium,Level 1,Research Director,Dissatisfied,Married,1755,Yes,Level 0,0,6,Bad,9,4,4
+Oka Purnama,29,505,Sales,21,Satisfied,Low,Level 2,Manager,Satisfied,Divorced,1200,No,Level 2,38,0,Bad,4,3,4
+Bayu Ramadhan,34,681,Research & Development,7,Very Satisfied,High,Level 1,Sales Representative,Very Dissatisfied,Married,2155,No,Level 1,16,3,Bad,20,12,0
+Vina Santoso,52,122,Research & Development,24,Dissatisfied,Medium,Level 5,Manufacturing Director,Satisfied,Married,3246,No,Level 0,5,3,Best,18,3,5
+Indra Lestari,30,1050,Sales,31,Satisfied,Medium,Level 2,Sales Executive,Dissatisfied,Single,2787,Yes,Level 0,0,2,Bad,3,1,3
+Dewi Maulana,55,1188,Sales,38,Very Satisfied,High,Level 1,Sales Representative,Satisfied,Divorced,2174,No,Level 2,4,4,Better,17,7,2
+Hadi Nuraini,56,918,Sales,22,Very Dissatisfied,High,Level 1,Research Scientist,Very Dissatisfied,Divorced,1920,No,Level 2,37,5,Better,8,4,2
+Budi Nuraini,46,1218,Sales,15,Dissatisfied,Low,Level 5,Human Resources,Very Dissatisfied,Single,9277,No,Level 0,5,6,Good,13,3,7
+Dimas Herlina,19,381,Research & Development,34,Dissatisfied,Very High,Level 5,Research Scientist,Very Satisfied,Divorced,6966,No,Level 2,22,5,Better,17,2,14
+Agus Kusuma,21,327,Research & Development,25,Satisfied,Very High,Level 2,Research Scientist,Very Satisfied,Single,1200,Yes,Level 0,30,4,Bad,3,0,3
+Nadia Wijaya,25,336,Human Resources,34,Very Dissatisfied,Very High,Level 1,Sales Executive,Dissatisfied,Married,1934,No,Level 3,35,4,Bad,13,5,1
+Putri Syahputra,23,590,Research & Development,16,Very Satisfied,Low,Level 3,Healthcare Representative,Very Dissatisfied,Married,3527,No,Level 3,18,5,Best,9,8,5
+Wulan Prasetyo,41,823,Sales,24,Dissatisfied,Low,Level 4,Sales Representative,Very Dissatisfied,Single,6375,Yes,Level 0,0,0,Best,0,0,0
+Nadia Maulana,26,1241,Sales,30,Very Dissatisfied,Low,Level 5,Manufacturing Director,Dissatisfied,Divorced,13918,Yes,Level 1,34,4,Good,1,1,1
+Wulan Prasetyo,31,1341,Human Resources,28,Very Satisfied,Low,Level 4,Healthcare Representative,Very Satisfied,Married,8152,Yes,Level 1,19,2,Best,20,15,2
+Dewi Firmansyah,30,331,Human Resources,26,Dissatisfied,Very High,Level 4,Manufacturing Director,Satisfied,Divorced,2737,No,Level 3,11,3,Good,6,5,3
+Laras Kusuma,40,929,Human Resources,13,Very Satisfied,Very High,Level 4,Laboratory Technician,Very Dissatisfied,Divorced,10517,No,Level 0,27,3,Best,0,0,0
+Yoga Maulana,38,433,Human Resources,17,Satisfied,High,Level 3,Laboratory Technician,Very Dissatisfied,Single,5028,No,Level 1,2,2,Good,12,9,5
+Gita Maulana,29,1416,Human Resources,7,Satisfied,Low,Level 2,Sales Representative,Very Dissatisfied,Divorced,4729,Yes,Level 1,28,3,Good,3,2,3
+Indra Saputra,24,1032,Sales,6,Very Dissatisfied,Medium,Level 5,Research Scientist,Very Satisfied,Married,9376,Yes,Level 2,34,6,Better,0,0,0
+Elang Prasetyo,42,109,Human Resources,9,Satisfied,Medium,Level 5,Sales Executive,Very Satisfied,Single,10043,No,Level 2,16,4,Good,1,1,1
+Eka Permata,49,996,Human Resources,37,Very Satisfied,Very High,Level 3,Human Resources,Very Dissatisfied,Married,4049,Yes,Level 1,1,4,Better,8,5,4
+Zahra Prasetyo,58,399,Research & Development,20,Satisfied,Very High,Level 2,Manufacturing Director,Very Satisfied,Divorced,2375,No,Level 1,7,4,Good,17,2,11
+Yoga Purnama,57,1322,Sales,9,Dissatisfied,Very High,Level 3,Laboratory Technician,Satisfied,Married,4864,No,Level 2,20,2,Best,0,0,0
+Ahmad Firmansyah,42,627,Sales,38,Dissatisfied,Very High,Level 1,Manager,Very Dissatisfied,Married,2061,No,Level 0,19,3,Best,16,10,9
+Joko Syahputra,37,1064,Sales,37,Very Dissatisfied,High,Level 1,Healthcare Representative,Very Satisfied,Married,3279,No,Level 1,40,4,Better,9,1,4
+Bayu Prasetyo,41,1008,Sales,21,Very Dissatisfied,High,Level 1,Manufacturing Director,Very Satisfied,Divorced,2017,No,Level 3,35,4,Better,15,1,13
+Maya Nuraini,49,467,Research & Development,40,Satisfied,Medium,Level 2,Research Scientist,Satisfied,Divorced,3624,Yes,Level 0,14,4,Bad,20,16,19
+Rafi Purnama,55,199,Research & Development,25,Dissatisfied,Medium,Level 2,Research Director,Satisfied,Married,3485,No,Level 0,3,4,Bad,13,5,2
+Zahra Herlina,35,858,Sales,12,Very Satisfied,High,Level 3,Manufacturing Director,Dissatisfied,Married,4891,No,Level 1,0,3,Bad,13,7,13
+Ahmad Pratama,20,1302,Sales,9,Dissatisfied,Low,Level 5,Sales Executive,Dissatisfied,Married,12531,Yes,Level 0,20,5,Good,2,2,1
+Siti Lestari,60,1302,Research & Development,9,Very Dissatisfied,Medium,Level 5,Healthcare Representative,Very Satisfied,Single,9794,Yes,Level 0,38,4,Good,4,2,0
+Putri Ramadhan,28,182,Research & Development,9,Dissatisfied,Low,Level 1,Manufacturing Director,Satisfied,Divorced,2036,No,Level 1,4,6,Best,11,11,0
+Putri Purnama,22,699,Sales,25,Very Dissatisfied,Medium,Level 3,Sales Executive,Dissatisfied,Single,7108,No,Level 3,33,2,Good,14,13,4
+Taufik Aulia,43,621,Research & Development,36,Dissatisfied,Low,Level 3,Sales Representative,Satisfied,Divorced,7295,No,Level 3,24,1,Better,8,8,3
+Yoga Permata,30,553,Sales,11,Very Satisfied,Medium,Level 5,Research Director,Dissatisfied,Single,9572,No,Level 3,22,2,Better,20,13,2
+Agus Santoso,29,954,Research & Development,23,Satisfied,High,Level 4,Research Director,Very Satisfied,Married,6999,Yes,Level 3,3,5,Good,20,9,11
+Putri Firmansyah,47,918,Research & Development,10,Dissatisfied,Medium,Level 2,Research Scientist,Dissatisfied,Married,4012,No,Level 0,16,2,Best,10,10,10
+Taufik Prasetyo,25,455,Human Resources,27,Very Satisfied,High,Level 5,Sales Representative,Dissatisfied,Divorced,8984,Yes,Level 0,23,4,Better,15,1,12
+Putri Firmansyah,50,724,Research & Development,40,Very Dissatisfied,Medium,Level 4,Laboratory Technician,Dissatisfied,Single,4025,Yes,Level 1,8,3,Good,20,0,15
+Elang Aulia,39,870,Human Resources,11,Very Satisfied,Low,Level 5,Healthcare Representative,Dissatisfied,Divorced,9228,Yes,Level 0,3,6,Bad,11,10,11
+Taufik Pratama,34,395,Research & Development,4,Very Satisfied,Very High,Level 2,Research Scientist,Very Dissatisfied,Married,5751,No,Level 0,32,3,Best,13,1,5
+Budi Firmansyah,56,148,Sales,30,Dissatisfied,Very High,Level 4,Research Scientist,Dissatisfied,Single,8863,No,Level 0,24,1,Good,12,11,7
+Budi Herlina,30,1447,Sales,18,Very Dissatisfied,High,Level 2,Human Resources,Very Satisfied,Married,3800,No,Level 2,23,0,Good,6,1,2
+Oka Santoso,33,766,Research & Development,31,Dissatisfied,High,Level 2,Research Scientist,Dissatisfied,Divorced,3749,No,Level 0,27,5,Good,7,1,1
+Yoga Prasetyo,37,358,Sales,2,Very Dissatisfied,Low,Level 1,Laboratory Technician,Very Dissatisfied,Married,2283,No,Level 0,15,3,Good,3,1,2
+Putra Saputra,40,863,Research & Development,35,Very Dissatisfied,Low,Level 2,Healthcare Representative,Dissatisfied,Married,3246,Yes,Level 2,33,1,Better,18,11,11
+Citra Santoso,27,230,Sales,10,Satisfied,Low,Level 3,Manufacturing Director,Very Satisfied,Single,5289,Yes,Level 3,6,1,Best,1,0,1
+Joko Firmansyah,48,1378,Human Resources,9,Dissatisfied,Medium,Level 3,Manager,Dissatisfied,Divorced,5860,No,Level 2,13,3,Good,16,13,7
+Joko Permata,36,1230,Human Resources,1,Very Satisfied,Very High,Level 5,Manufacturing Director,Dissatisfied,Single,11262,No,Level 0,20,2,Good,4,3,1
+Siti Santoso,31,1123,Sales,31,Very Satisfied,High,Level 3,Healthcare Representative,Very Satisfied,Divorced,4455,No,Level 0,2,6,Best,10,6,4
+Putra Permata,53,1468,Sales,1,Dissatisfied,Medium,Level 2,Manufacturing Director,Very Dissatisfied,Divorced,4096,No,Level 0,23,5,Bad,4,4,2
+Gita Syahputra,59,1185,Sales,2,Satisfied,Very High,Level 3,Research Scientist,Very Dissatisfied,Divorced,5907,Yes,Level 0,19,6,Better,1,0,0
+Indra Nuraini,38,215,Sales,28,Dissatisfied,Medium,Level 3,Manager,Satisfied,Single,5581,No,Level 0,34,4,Good,8,6,7
+Ahmad Ramadhan,45,1382,Human Resources,38,Very Satisfied,Medium,Level 4,Research Director,Very Satisfied,Single,4792,No,Level 0,1,2,Good,11,5,4
+Bayu Herlina,52,837,Sales,3,Very Satisfied,Low,Level 1,Manufacturing Director,Dissatisfied,Divorced,2041,No,Level 3,22,5,Good,20,10,8
+Ahmad Maulana,31,881,Sales,3,Dissatisfied,High,Level 3,Research Scientist,Satisfied,Married,5840,Yes,Level 1,11,0,Best,1,0,1
+Putri Wijaya,21,1197,Sales,14,Dissatisfied,Medium,Level 3,Sales Representative,Satisfied,Divorced,4358,Yes,Level 2,24,6,Bad,20,18,1
+Sari Maulana,60,431,Sales,15,Very Satisfied,High,Level 2,Manager,Dissatisfied,Married,5029,No,Level 0,29,6,Good,16,5,4
+Rafi Wijaya,44,297,Human Resources,33,Very Dissatisfied,Low,Level 4,Sales Executive,Satisfied,Single,7903,Yes,Level 2,30,3,Best,14,13,10
+Putra Aulia,40,161,Sales,15,Dissatisfied,Medium,Level 5,Human Resources,Very Dissatisfied,Single,7940,No,Level 2,6,2,Best,19,4,4
+Yoga Aulia,21,1327,Sales,33,Dissatisfied,High,Level 1,Sales Executive,Very Satisfied,Married,2213,No,Level 2,16,2,Good,10,7,6
+Maya Kusuma,35,901,Sales,14,Very Satisfied,Very High,Level 1,Laboratory Technician,Very Dissatisfied,Married,1230,Yes,Level 1,39,0,Better,16,6,15
+Indra Herlina,27,228,Human Resources,9,Satisfied,High,Level 4,Laboratory Technician,Satisfied,Divorced,7256,No,Level 3,23,3,Good,15,8,3
+Dimas Ramadhan,33,679,Research & Development,30,Satisfied,Low,Level 2,Manufacturing Director,Very Dissatisfied,Divorced,3639,Yes,Level 2,38,3,Good,12,1,12
+Hadi Permata,35,896,Research & Development,17,Very Satisfied,Very High,Level 4,Manufacturing Director,Very Satisfied,Single,6724,No,Level 2,9,1,Better,14,4,2
+Zahra Firmansyah,44,373,Sales,34,Very Dissatisfied,High,Level 3,Laboratory Technician,Satisfied,Single,4637,No,Level 1,11,5,Good,4,1,2
+Gita Wijaya,21,1081,Sales,9,Very Dissatisfied,Very High,Level 1,Research Director,Dissatisfied,Married,1388,No,Level 2,26,2,Better,6,5,6
+Fajar Saputra,18,703,Human Resources,13,Very Satisfied,Low,Level 4,Human Resources,Very Dissatisfied,Single,7225,Yes,Level 2,30,0,Better,7,3,0
+Umar Firmansyah,37,723,Research & Development,31,Satisfied,Very High,Level 4,Manager,Satisfied,Single,9065,Yes,Level 1,40,1,Bad,17,5,5
+Budi Prasetyo,28,1216,Human Resources,28,Very Dissatisfied,Low,Level 4,Manager,Satisfied,Divorced,9475,No,Level 1,18,3,Better,17,13,5
+Zahra Aulia,58,506,Research & Development,1,Dissatisfied,Very High,Level 4,Human Resources,Very Dissatisfied,Married,11050,No,Level 0,19,1,Good,16,6,11
+Dimas Prasetyo,60,664,Human Resources,5,Dissatisfied,Very High,Level 5,Sales Representative,Very Dissatisfied,Divorced,11418,No,Level 1,11,0,Good,17,8,0
+Fajar Purnama,51,581,Sales,14,Very Dissatisfied,Medium,Level 5,Manager,Very Dissatisfied,Divorced,8051,Yes,Level 1,31,6,Better,11,2,2
+Wulan Prasetyo,18,855,Research & Development,36,Satisfied,Very High,Level 1,Manufacturing Director,Very Dissatisfied,Married,1853,Yes,Level 2,8,1,Good,5,3,3
+Putri Santoso,27,1305,Human Resources,37,Dissatisfied,Very High,Level 3,Laboratory Technician,Very Dissatisfied,Married,6954,No,Level 1,17,1,Better,9,6,4
+Nadia Aulia,45,287,Sales,13,Very Dissatisfied,Low,Level 2,Laboratory Technician,Very Dissatisfied,Married,3816,No,Level 0,36,2,Good,4,0,2
