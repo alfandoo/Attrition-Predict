@@ -2715,60 +2715,78 @@
             ></div>
 
         
-           <!-- Table -->
-<div class="overflow-x-auto relative">
-  <table
-    class="min-w-full table-fixed text-sm text-slate-800 dark:text-slate-200"
-  >
-    <caption class="sr-only">
-      Hasil prediksi per baris pada CSV
-    </caption>
-    <colgroup>
-      <col style="width: 80px" />
-      <col style="width: 260px" />
-      <col style="width: 160px" />
-      <col style="width: 160px" />
-      <col style="width: 140px" />
-      <col style="width: 140px" />
-    </colgroup>
+         <!-- Table -->
+            <div class="overflow-x-auto relative">
+              <table
+                class="min-w-full table-fixed text-sm text-slate-800 dark:text-slate-200"
+              >
+                <caption class="sr-only">
+                  Hasil prediksi per baris pada CSV
+                </caption>
+                <colgroup>
+                  <col style="width: 80px" />
+                  <col style="width: 260px" />
+                  <col style="width: 160px" />
+                  <col style="width: 160px" />
+                  <col style="width: 140px" />
+                  <col style="width: 140px" />
+                </colgroup>
+                <thead
+                  class="sticky top-0 z-10 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/10 backdrop-blur supports-[backdrop-filter]:bg-slate-900/10 dark:bg-white/10"
+                >
+                  <tr class="text-slate-700 dark:text-slate-200">
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Index
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Nama Karyawan
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Prediksi
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      % Bertahan
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      % Resign
+                    </th>
+                    <th
+                      scope="col"
+                      class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
+                    >
+                      Confidence
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  id="csvResultBody"
+                  class="divide-y divide-slate-200/70 dark:divide-white/10"
+                ></tbody>
+              </table>
 
-    <!-- Header -->
-    <thead
-      class="sticky top-0 z-10 border-b border-slate-200/70 dark:border-white/10 
-             bg-gray-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200"
-    >
-      <tr>
-        <th class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide">Index</th>
-        <th class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide">Nama Karyawan</th>
-        <th class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide">Prediksi</th>
-        <th class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide">% Bertahan</th>
-        <th class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide">% Resign</th>
-        <th class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide">Confidence</th>
-      </tr>
-    </thead>
-
- <!-- Body -->
-<tbody
-  id="csvResultBody"
-  class="divide-y divide-slate-200/70 dark:divide-slate-700 
-         bg-gray-100 dark:bg-slate-800
-         text-slate-700 dark:text-slate-200
-         [&>tr:nth-child(even)]:bg-gray-200 dark:[&>tr:nth-child(even)]:bg-slate-700
-         [&>tr:hover]:bg-gray-300 dark:[&>tr:hover]:bg-slate-600
-         transition-colors"
-></tbody>
-
-
-  <!-- fade edges -->
-  <div
-    class="pointer-events-none absolute inset-y-0 left-0 w-6 
-           bg-gradient-to-r from-transparent to-slate-900/10 dark:to-white/10"
-  ></div>
-  <div
-    class="pointer-events-none absolute inset-y-0 right-0 w-6 
-           bg-gradient-to-l from-transparent to-slate-900/10 dark:to-white/10"
-  ></div>
-</div>
+              <!-- fade edges -->
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-transparent to-slate-900/5 dark:to-white/10"
+              ></div>
+              <div
+                class="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-transparent to-slate-900/5 dark:to-white/10"
+              ></div>
+            </div>
 
 
 
