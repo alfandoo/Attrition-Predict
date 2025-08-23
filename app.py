@@ -222,7 +222,7 @@ def predict_csv():
                 results.append({
                     "index": int(idx) + 1,
                     "employee_name": pick_name_from_row(row, name_col),
-                    "prediction": "Karyawan Mungkin Resign" if pred == 1 else "Karyawan Bertahan",
+                    "prediction": "At Risk of Resignation" if pred == 1 else "Retained",
                     "probability": {
                         "bertahan": round(float(proba[0]) * 100, 2),
                         "resign":   round(float(proba[1]) * 100, 2)
