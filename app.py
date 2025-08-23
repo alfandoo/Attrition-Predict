@@ -179,7 +179,7 @@ def predict_api():
     return jsonify({
         "success": True,
         "employee_name": pick_name_from_payload(payload),   # ikutkan nama jika ada
-        "prediction": "Karyawan Mungkin Resign" if pred == 1 else "Karyawan Bertahan",
+        "prediction": "At Risk of Resignation" if pred == 1 else "Retained",
         "predicted_class": pred,
         "probability": {
             "bertahan": round(float(proba[0]) * 100, 2),
