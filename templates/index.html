@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prediksi Attrition Karyawan | AttritionPredict</title>
+    <title>Employee Attrition Prediction | AttritionPredict</title>
     <!-- SEO & Performance -->
     <meta
       name="description"
-      content="AttritionPredict membantu HR memprediksi risiko attrition karyawan dengan AI. Isi form atau upload CSV untuk hasil cepat dan akurat."
+      content="AttritionPredict helps HR predict employee attrition risk with AI. Fill out the form or upload a CSV for fast, accurate results."
     />
     <link rel="canonical" href="https://example.com/" />
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
-    <!-- Tailwind (CDN untuk dev; produksi sebaiknya build) -->
+    <!-- Tailwind (CDN for dev; build for production) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Style kustom (opsional) -->
+    <!-- Custom styles (optional) -->
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
@@ -23,7 +23,7 @@
     <!-- Noscript fallback -->
     <noscript>
       <div class="bg-yellow-50 text-yellow-800 p-4 text-sm text-center">
-        Situs ini membutuhkan JavaScript untuk memproses prediksi & upload CSV.
+        This site requires JavaScript to run predictions and upload CSV files.
       </div>
     </noscript>
     <script>
@@ -38,9 +38,10 @@
       };
     </script>
   </head>
+
   <body class="bg-gray-50 text-gray-800 font-sans">
     <!-- Skip to main -->
-    <a href="#prediksi" class="sr-only sr-skip">Lewati ke Form Prediksi</a>
+    <a href="#prediction" class="sr-only sr-skip">Skip to Prediction Form</a>
 
     <!-- Navbar -->
     <header id="navbar" class="fixed inset-x-0 top-0 z-50 text-white">
@@ -68,27 +69,31 @@
           <a
             href=""
             class="text-xl md:text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-yellow-200 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded"
-            aria-label="Kembali ke bagian atas"
+            aria-label="Back to top"
           >
             AttritionPredict
           </a>
 
-          <!-- Mobile toggle (checkbox, no JS) -->
+          <!-- Mobile toggle (checkbox) -->
           <input
             id="nav-toggle"
             type="checkbox"
             class="peer sr-only"
             aria-hidden="true"
           />
+
           <label
             for="nav-toggle"
+            id="menu-btn"
             class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg ring-1 ring-white/20 bg-white/10 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 cursor-pointer"
             aria-controls="mobile-menu"
+            aria-expanded="false"
           >
-            <span class="sr-only">Buka menu</span>
+            <span class="sr-only">Open menu</span>
+
             <!-- burger -->
             <svg
-              class="peer-checked:hidden h-5 w-5"
+              class="h-5 w-5 peer-checked:hidden"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -102,9 +107,10 @@
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-            <!-- close -->
+
+            <!-- close (X) -->
             <svg
-              class="hidden peer-checked:block h-5 w-5"
+              class="h-5 w-5 hidden peer-checked:block"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -124,35 +130,39 @@
           <nav
             id="nav-links"
             class="hidden md:flex items-center gap-8"
-            aria-label="Navigasi utama"
+            aria-label="Main navigation"
           >
             <a
-              href="#tentang"
-              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
-              >Tentang</a
+              href="#about"
+              class="nav-link relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
             >
+              About
+            </a>
             <a
-              href="#fitur-data"
-              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
-              >Fitur - Data</a
+              href="#features-data"
+              class="nav-link relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
             >
+              Features - Data
+            </a>
             <a
               href="#model"
-              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
-              >Model</a
+              class="nav-link relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
             >
+              Model
+            </a>
             <a
-              href="#cara-kerja"
-              class="relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
-              >Cara Kerja</a
+              href="#how-it-works"
+              class="nav-link relative inline-flex items-center font-medium text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 rounded after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-cyan-300 after:transition-all hover:after:w-full aria-[current=page]:text-white aria-[current=page]:font-semibold aria-[current=page]:after:w-full"
             >
+              How It Works
+            </a>
 
             <!-- Optional CTA -->
             <a
-              href="#prediksi"
+              href="#prediction"
               class="ml-2 inline-flex items-center gap-2 rounded-xl px-4 py-2 font-semibold bg-white/10 ring-1 ring-white/20 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 transition"
             >
-              Mulai
+              Get Started
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-4 w-4"
@@ -177,33 +187,62 @@
           id="mobile-menu"
           class="peer-checked:block hidden md:hidden mt-2 rounded-xl bg-white/10 ring-1 ring-white/20 backdrop-blur p-4 space-y-2"
           role="dialog"
-          aria-label="Menu mobile"
+          aria-label="Mobile menu"
         >
           <a
-            href="#tentang"
-            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
-            >Tentang</a
+            href="#about"
+            class="nav-link block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
           >
+            About
+          </a>
+
           <a
-            href="#fitur-data"
-            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
-            >Fitur - Data</a
+            href="#features-data"
+            class="nav-link block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
           >
+            Features - Data
+          </a>
+
           <a
             href="#model"
-            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
-            >Model</a
+            class="nav-link block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
           >
+            Model
+          </a>
+
           <a
-            href="#cara-kerja"
-            class="block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
-            >Cara Kerja</a
+            href="#how-it-works"
+            class="nav-link block rounded-lg px-3 py-2 font-medium text-white/90 hover:bg-white/10"
           >
+            How It Works
+          </a>
         </nav>
       </div>
     </header>
 
-    <!-- HERO — AI AttritionPredict (improved) -->
+    <!-- Back to top (always visible) -->
+    <button
+      id="backToTop"
+      class="hidden fixed bottom-6 right-6 z-50 rounded-full p-3 bg-white/10 ring-1 ring-white/20 backdrop-blur hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+      aria-label="Back to top"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
+    </button>
+
+    <!-- HERO — AI AttritionPredict -->
     <section
       id="hero"
       class="relative mt-16 pt-28 pb-20 text-white overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
@@ -214,57 +253,58 @@
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <!-- dotted texture -->
         <div
-          class="absolute inset-0 opacity-15 mix-blend-screen bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')]"
+          class="absolute inset-0 opacity-15 mix-blend-screen bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] animate-fade-in"
         ></div>
         <!-- glow blobs -->
         <div
-          class="absolute -top-24 -right-20 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+          class="absolute -top-24 -right-20 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30 animate-blob"
         ></div>
         <div
-          class="absolute -bottom-32 -left-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-20 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+          class="absolute -bottom-32 -left-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-20 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30 animate-blob animation-delay-2000"
         ></div>
       </div>
 
       <div
         class="mx-auto max-w-7xl px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center"
       >
-        <!-- Copy -->
-        <div class="text-center lg:text-left">
+        <!-- Text Copy -->
+        <div class="text-center lg:text-left animate-reveal">
           <h1
             id="hero-title"
             class="font-extrabold leading-tight tracking-tight text-4xl md:text-5xl lg:text-6xl"
           >
-            Prediksi
+            Employee
             <span
-              class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-yellow-200"
+              class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-200 to-yellow-200 animate-gradient"
             >
-              Attrition Karyawan
+              Attrition Prediction
             </span>
-            dengan
+            with
             <span
               class="underline decoration-yellow-300 decoration-4 underline-offset-4"
-              >Kecerdasan Buatan</span
             >
+              Artificial Intelligence
+            </span>
           </h1>
 
           <p
             id="hero-subtitle"
-            class="mt-4 text-lg md:text-xl/relaxed text-white/90 max-w-2xl mx-auto lg:mx-0"
+            class="mt-4 text-lg md:text-xl/relaxed text-white/90 max-w-2xl mx-auto lg:mx-0 animate-fade-in-delayed"
           >
-            Bantu HR mengambil keputusan strategis dengan analisis cepat &
-            akurat untuk mengidentifikasi risiko karyawan keluar.
+            Help HR make strategic decisions with fast & accurate analysis to
+            identify employees at risk of leaving.
           </p>
 
           <!-- CTAs -->
           <div
-            class="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start"
+            class="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start animate-fade-in-up"
           >
             <a
-              href="#prediksi"
+              href="#prediction"
               class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold shadow-lg bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 ring-1 ring-black/5 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-blue-800 transition motion-reduce:transition-none"
-              aria-label="Mulai Prediksi Attrition sekarang"
+              aria-label="Start attrition prediction now"
             >
-              Mulai Prediksi
+              Start Prediction
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none"
@@ -283,18 +323,18 @@
             </a>
 
             <a
-              href="#fitur-data"
+              href="#features-data"
               class="inline-flex items-center gap-2 rounded-xl px-5 py-3 font-medium bg-white/10 ring-1 ring-white/20 backdrop-blur hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition motion-reduce:transition-none"
-              aria-label="Lihat template CSV"
+              aria-label="View CSV template"
             >
-              Lihat Template CSV
+              View CSV Template
             </a>
           </div>
 
           <!-- Trust / social proof -->
           <ul
             class="mt-6 flex flex-wrap items-center gap-2 justify-center lg:justify-start"
-            aria-label="Keunggulan sistem"
+            aria-label="System highlights"
           >
             <li
               class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1.5 ring-1 ring-white/15"
@@ -302,35 +342,35 @@
               <span
                 class="inline-block w-2 h-2 rounded-full bg-emerald-300"
               ></span>
-              Akurasi model 86.7% (RF)
+              Model accuracy 86.7% (RF)
             </li>
             <li
               class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1.5 ring-1 ring-white/15"
             >
-              ⚡ Respons &lt; 1 detik*
+              ⚡ Response &lt; 1 second*
             </li>
             <li
               class="inline-flex items-center gap-2 text-sm bg-white/10 rounded-full px-3 py-1.5 ring-1 ring-white/15"
             >
-              📄 CSV siap pakai
+              📄 Ready-to-use CSV
             </li>
           </ul>
 
           <p class="mt-2 text-xs text-white/70">
-            *Bergantung ukuran data & koneksi. Tidak perlu login.
+            *Depends on data size & connection. No login required.
           </p>
         </div>
 
-        <!-- Illustration / Product peek -->
-        <div class="relative">
+        <!-- Illustration / Product preview -->
+        <div class="relative animate-float">
           <!-- device card mock -->
           <figure
-            class="mx-auto w-full max-w-md rounded-2xl bg-white/10 ring-1 ring-white/20 p-5 backdrop-blur shadow-2xl"
+            class="mx-auto w-full max-w-md rounded-2xl bg-white/10 ring-1 ring-white/20 p-5 backdrop-blur shadow-2xl animate-pop-in"
             role="img"
-            aria-label="Cuplikan hasil prediksi attrition"
+            aria-label="Preview of attrition prediction results"
           >
             <figcaption class="sr-only">
-              Cuplikan hasil prediksi attrition
+              Preview of attrition prediction results
             </figcaption>
 
             <!-- header -->
@@ -369,8 +409,8 @@
             <!-- score -->
             <div class="mt-5">
               <div class="flex items-end justify-between">
-                <h3 class="text-lg font-semibold">Probabilitas Attrition</h3>
-                <span class="text-sm text-white/80">0.85 • Tinggi</span>
+                <h3 class="text-lg font-semibold">Attrition Probability</h3>
+                <span class="text-sm text-white/80">0.85 • High</span>
               </div>
               <!-- progress (pure CSS) -->
               <div
@@ -381,7 +421,7 @@
                 ></div>
               </div>
               <p class="mt-2 text-xs text-white/70">
-                Faktor utama: OverTime, JobSatisfaction, YearsAtCompany
+                Key factors: OverTime, JobSatisfaction, YearsAtCompany
               </p>
             </div>
 
@@ -389,26 +429,27 @@
             <div class="mt-5 grid grid-cols-2 gap-3">
               <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
                 <p class="text-xs text-white/70">Batch CSV</p>
-                <p class="font-semibold">Upload &amp; Prediksi</p>
+                <p class="font-semibold">Upload & Predict</p>
               </div>
               <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
                 <p class="text-xs text-white/70">Realtime</p>
-                <p class="font-semibold">Form Tunggal</p>
+                <p class="font-semibold">Single Form</p>
               </div>
             </div>
           </figure>
 
           <!-- floating chips -->
-          <div class="absolute -left-4 top-6 md:-left-10">
+          <div class="absolute -left-4 top-0 md:-left-16 animate-chip-1">
             <div
-              class="rounded-full bg-white/10 ring-1 ring-white/20 px-3 py-1.5 text-xs backdrop-blur"
+              class="rounded-full bg-gradient-to-r from-white/10 to-white/5 ring-1 ring-white/20 px-3 md:px-4 py-1.5 text-xs font-semibold text-white/90 backdrop-blur shadow-sm hover:bg-white/15 transition-colors"
             >
-              🔒 Data aman
+              🔒 Data Safe
             </div>
           </div>
-          <div class="absolute -right-2 -bottom-3 md:-right-6">
+
+          <div class="absolute -right-4 bottom-0 md:-right-16 animate-chip-2">
             <div
-              class="rounded-full bg-white/10 ring-1 ring-white/20 px-3 py-1.5 text-xs backdrop-blur"
+              class="rounded-full bg-gradient-to-r from-white/10 to-white/5 ring-1 ring-white/20 px-3 md:px-4 py-1.5 text-xs font-semibold text-white/90 backdrop-blur shadow-sm hover:bg-white/15 transition-colors"
             >
               🧮 SHAP-ready
             </div>
@@ -428,75 +469,76 @@
       ></div>
     </section>
 
-    <!-- Tentang (Improved, Tailwind-only) -->
+    <!-- About -->
     <section
-      id="tentang"
+      id="about"
       aria-labelledby="about-title"
-      class="relative scroll-mt-24 py-20 text-slate-800 dark:text-slate-100 overflow-hidden"
+      class="relative scroll-mt-24 py-16 sm:py-20 lg:py-24 text-slate-800 dark:text-slate-100 overflow-hidden"
     >
-      <!-- Background: ringan namun tetap nyambung ke hero -->
+      <!-- Background -->
       <div
         class="absolute inset-0 -z-10 bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
         aria-hidden="true"
       ></div>
       <!-- dotted texture -->
       <div
-        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen animate-pulse motion-reduce:animate-none"
         aria-hidden="true"
       ></div>
       <!-- glow blobs -->
       <div
-        class="pointer-events-none absolute -top-24 -left-16 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        class="pointer-events-none absolute -top-32 -left-20 w-64 sm:w-80 md:w-[30rem] lg:w-[36rem] h-64 sm:h-80 md:h-[30rem] lg:h-[36rem] rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform animate-pulse motion-reduce:animate-none"
         aria-hidden="true"
+        data-parallax="up"
       ></div>
       <div
-        class="pointer-events-none absolute -bottom-24 -right-16 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-20 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        class="pointer-events-none absolute -bottom-32 -right-20 w-56 sm:w-72 md:w-[28rem] lg:w-[32rem] h-56 sm:h-72 md:h-[28rem] lg:h-[32rem] rounded-full blur-3xl opacity-20 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform animate-pulse motion-reduce:animate-none"
         aria-hidden="true"
+        data-parallax="down"
       ></div>
 
       <div
-        class="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 items-center gap-12 relative"
+        class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative"
       >
-        <!-- Gambar (glassy card + chips) -->
-        <figure class="relative">
+        <!-- Image -->
+        <figure
+          class="relative reveal opacity-0 translate-y-4 transition-all duration-700 ease-out"
+        >
           <div
-            class="group mx-auto w-full max-w-md rounded-2xl bg-white/70 dark:bg-white/10 backdrop-blur ring-1 ring-black/5 dark:ring-white/10 p-5 shadow-xl transition hover:translate-y-[-2px] motion-reduce:transition-none"
+            class="group mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md rounded-2xl bg-white/70 dark:bg-white/10 backdrop-blur ring-1 ring-black/5 dark:ring-white/10 p-4 sm:p-5 shadow-xl transition hover:-translate-y-1"
           >
             <img
               src="https://cdn-icons-png.flaticon.com/512/9071/9071315.png"
-              alt="Ilustrasi analitik HR dengan AI"
+              alt="Illustration of HR analytics with AI"
               class="w-full rounded-xl"
               loading="lazy"
-              decoding="async"
-              width="512"
-              height="512"
             />
-            <!-- chips kecil -->
-            <div class="absolute -left-7 -top-9">
+            <!-- chips -->
+            <div class="hidden sm:block absolute -left-6 -top-8">
               <span
-                class="rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-black/5 dark:ring-white/15 px-3 py-1.5 text-xs backdrop-blur"
-                >🔒 Data aman</span
+                class="rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-black/5 dark:ring-white/15 px-2.5 sm:px-3 py-1 text-xs backdrop-blur transition-transform duration-700 group-hover:-translate-y-0.5"
+                >🔒 Data Safe</span
               >
             </div>
-            <div class="absolute -right-7 -bottom-9">
+            <div class="hidden sm:block absolute -right-6 -bottom-8">
               <span
-                class="rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-black/5 dark:ring-white/15 px-3 py-1.5 text-xs backdrop-blur"
+                class="rounded-full bg-white/80 dark:bg-white/10 ring-1 ring-black/5 dark:ring-white/15 px-2.5 sm:px-3 py-1 text-xs backdrop-blur transition-transform duration-700 group-hover:translate-y-0.5"
                 >⚡ Realtime & Batch</span
               >
             </div>
           </div>
           <figcaption class="sr-only">
-            Ilustrasi fitur AI untuk analitik HR
+            Illustration of AI features for HR analytics
           </figcaption>
         </figure>
 
-        <!-- Konten -->
-        <div class="text-center lg:text-left">
+        <!-- Content -->
+        <div class="text-center lg:text-left space-y-4">
           <h2
             id="about-title"
-            class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-100 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-2"
           >
-            Tentang
+            About
             <span
               class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-600 dark:from-cyan-200 dark:to-yellow-200"
             >
@@ -505,59 +547,72 @@
           </h2>
 
           <p
-            class="text-lg leading-relaxed max-w-prose mx-auto lg:mx-0 text-slate-700 dark:text-slate-200"
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-200 text-base sm:text-lg leading-relaxed max-w-prose mx-auto lg:mx-0 text-slate-700 dark:text-slate-200"
           >
-            <strong>AttritionPredict</strong> adalah aplikasi berbasis
+            <strong>AttritionPredict</strong> is a
             <span class="font-semibold text-blue-700 dark:text-cyan-200"
               >Machine Learning</span
             >
-            yang membantu <strong>departemen HR</strong> memprediksi kemungkinan
-            karyawan meninggalkan perusahaan secara cepat dan akurat.
+            based application that helps <strong>HR departments</strong> predict
+            employee attrition quickly and accurately.
           </p>
 
-          <!-- Keunggulan (kartu seragam) -->
+          <!-- Advantages (tidy grid, equal heights, neat wrapping) -->
           <ul
-            class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-slate-700 dark:text-slate-100"
-            aria-label="Keunggulan sistem"
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-300 mt-6 grid [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))] gap-4 items-stretch text-slate-700 dark:text-slate-100"
           >
-            <li
-              class="flex items-start gap-3 rounded-xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10"
-            >
-              <span
-                class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
-                >✔</span
+            <li class="h-full">
+              <article
+                class="h-full flex items-center gap-3 rounded-2xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10 transition-transform duration-500 hover:-translate-y-0.5"
               >
-              <span>Analisis cepat & akurat</span>
+                <span
+                  class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
+                  >✔</span
+                >
+                <p class="font-medium leading-snug">
+                  Fast &amp; accurate analysis
+                </p>
+              </article>
             </li>
-            <li
-              class="flex items-start gap-3 rounded-xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10"
-            >
-              <span
-                class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
-                >📊</span
+
+            <li class="h-full">
+              <article
+                class="h-full flex items-center gap-3 rounded-2xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10 transition-transform duration-500 hover:-translate-y-0.5"
               >
-              <span>Prediksi berbasis data nyata</span>
+                <span
+                  class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
+                  >📊</span
+                >
+                <p class="font-medium leading-snug">
+                  Predictions based on real data
+                </p>
+              </article>
             </li>
-            <li
-              class="flex items-start gap-3 rounded-xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10"
-            >
-              <span
-                class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
-                >💡</span
+
+            <li class="h-full">
+              <article
+                class="h-full flex items-center gap-3 rounded-2xl p-4 shadow bg-white/80 backdrop-blur ring-1 ring-slate-200 dark:bg-white/10 dark:ring-white/10 transition-transform duration-500 hover:-translate-y-0.5"
               >
-              <span>Rekomendasi langkah preventif</span>
+                <span
+                  class="shrink-0 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow ring-1 ring-white/20"
+                  >💡</span
+                >
+                <p class="font-medium leading-snug">
+                  Preventive action recommendations
+                </p>
+              </article>
             </li>
           </ul>
 
-          <!-- CTA (selaras hero) -->
+          <!-- CTA -->
           <div
-            class="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start"
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-500 mt-6 flex flex-wrap gap-3 justify-center lg:justify-start"
           >
             <a
-              href="#cara-kerja"
-              class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold shadow-lg bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 ring-1 ring-black/5 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-yellow-300 dark:text-slate-900"
+              href="#how-it-works"
+              class="group inline-flex items-center gap-2 rounded-xl px-5 sm:px-6 py-2.5 sm:py-3 font-semibold shadow-lg bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 ring-1 ring-black/5 hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 dark:text-slate-900"
             >
-              Pelajari Cara Kerjanya
+              Learn How It Works
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-5 h-5 transition-transform group-hover:translate-x-0.5"
@@ -576,20 +631,20 @@
             </a>
             <a
               href="#model"
-              class="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-medium bg-white/70 ring-1 ring-slate-200 text-slate-800 shadow-sm hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 dark:bg-white/10 dark:ring-white/15 dark:text-white dark:hover:bg-white/15"
+              class="inline-flex items-center gap-2 rounded-xl px-5 sm:px-6 py-2.5 sm:py-3 font-medium bg-white/70 ring-1 ring-slate-200 text-slate-800 shadow-sm hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-white/10 dark:ring-white/15 dark:text-white dark:hover:bg-white/15"
             >
-              Lihat Model
+              View Model
             </a>
           </div>
 
-          <!-- Trust badges ringkas -->
+          <!-- Badges -->
           <div
-            class="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-sm"
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-700 mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-sm"
           >
             <span
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 ring-1 ring-slate-200 text-emerald-700 dark:bg-white/10 dark:ring-white/15 dark:text-emerald-200"
             >
-              🏆 Akurasi 86.7% (RF)
+              🏆 Accuracy 86.7% (RF)
             </span>
             <span
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 ring-1 ring-slate-200 text-blue-700 dark:bg-white/10 dark:ring-white/15 dark:text-cyan-200"
@@ -599,89 +654,95 @@
             <span
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 ring-1 ring-slate-200 text-cyan-700 dark:bg-white/10 dark:ring-white/15 dark:text-cyan-200"
             >
-              ⚡ Prediksi cepat
+              ⚡ Fast prediction
             </span>
           </div>
         </div>
       </div>
 
-      <!-- Divider halus (match hero) -->
+      <!-- Divider -->
       <div
         class="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/30"
         aria-hidden="true"
       ></div>
     </section>
 
-    <!-- Fitur & Template CSV -->
+    <!-- Features & Template CSV -->
     <section
-      id="fitur-data"
-      class="relative scroll-mt-24 py-20 text-slate-800 overflow-hidden bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
+      id="features-data"
+      class="relative scroll-mt-24 py-16 sm:py-20 lg:py-24 text-slate-800 overflow-hidden bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
       aria-labelledby="dataset-title"
     >
       <!-- texture + glows -->
       <div
-        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen animate-pulse motion-reduce:animate-none"
         aria-hidden="true"
       ></div>
       <div
-        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        class="pointer-events-none absolute -top-32 -right-24 w-64 sm:w-80 md:w-[30rem] lg:w-[36rem] h-64 sm:h-80 md:h-[30rem] lg:h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
         aria-hidden="true"
+        data-parallax="up"
       ></div>
       <div
-        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        class="pointer-events-none absolute -bottom-32 -left-20 w-60 sm:w-72 md:w-[28rem] lg:w-[30rem] h-60 sm:h-72 md:h-[28rem] lg:h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
         aria-hidden="true"
+        data-parallax="down"
       ></div>
 
-      <div class="mx-auto max-w-7xl px-6 md:px-8 relative">
+      <div class="mx-auto max-w-6xl px-6">
         <!-- Header -->
-        <header class="text-center max-w-3xl mx-auto">
+        <header
+          class="text-center max-w-3xl mx-auto reveal opacity-0 translate-y-4 transition-all duration-700 ease-out"
+        >
           <h2
             id="dataset-title"
-            class="text-4xl md:text-5xl font-extrabold tracking-tight text-white"
+            class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white"
           >
-            Siapkan
+            Prepare
             <span
               class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-cyan-200 dark:to-yellow-200"
-              >Dataset Karyawan</span
             >
+              Employee Dataset
+            </span>
           </h2>
 
           <p class="mt-2 text-slate-700 dark:text-slate-200">
-            Ikuti 3 langkah singkat agar file langsung siap diproses.
+            Follow these 3 simple steps to make your file ready for processing.
           </p>
 
           <ul
-            class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs"
+            class="mt-4 flex flex-wrap items-center justify-center gap-2 text-[11px] sm:text-xs"
           >
             <li
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/70 ring-1 ring-slate-200 text-slate-700 dark:bg-white/10 dark:ring-white/15 dark:text-slate-200"
             >
-              📄 CSV UTF-8, delimiter koma
+              📄 CSV UTF-8, comma delimiter
             </li>
             <li
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/70 ring-1 ring-slate-200 text-slate-700 dark:bg-white/10 dark:ring-white/15 dark:text-slate-200"
             >
-              🔢 18 kolom wajib + 1 opsional
+              🔢 18 required columns + 1 optional
             </li>
             <li
               class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/70 ring-1 ring-slate-200 text-slate-700 dark:bg-white/10 dark:ring-white/15 dark:text-slate-200"
             >
-              ⏱️ Validasi real-time
+              ⏱️ Real-time validation
             </li>
           </ul>
         </header>
 
-        <!-- ROW 1: 3 Langkah -->
+        <!-- Steps -->
         <ol
-          class="mt-10 grid gap-6 md:grid-cols-3"
-          aria-label="Langkah menyiapkan dataset"
+          class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3"
+          aria-label="Steps to prepare dataset"
         >
           <!-- STEP 1 -->
-          <li>
+          <li
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out"
+          >
             <article
-              class="min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-indigo-100/70 via-indigo-50/50 to-cyan-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-indigo-200/60 shadow-sm p-6 flex flex-col"
+              class="min-h-[280px] sm:min-h-[300px] lg:min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-indigo-100/70 via-indigo-50/50 to-cyan-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-indigo-200/60 shadow-sm p-5 sm:p-6 flex flex-col transition-transform duration-500 hover:-translate-y-0.5"
             >
-              <!-- header -->
               <div class="flex items-center gap-3">
                 <div
                   class="h-10 w-10 flex items-center justify-center rounded-xl bg-indigo-100 text-indigo-700 ring-1 ring-indigo-200 font-semibold"
@@ -689,57 +750,57 @@
                   1
                 </div>
                 <h3
-                  class="text-xl font-semibold text-indigo-800 dark:text-cyan-100"
+                  class="text-lg sm:text-xl font-semibold text-indigo-800 dark:text-cyan-100"
                 >
-                  Unduh Template
+                  Download Template
                 </h3>
               </div>
 
-              <!-- body -->
               <div class="mt-2 text-sm text-slate-700 dark:text-slate-200">
-                Gunakan encoding <b>UTF-8</b> & delimiter <b>koma</b>.
+                Use <b>UTF-8</b> encoding & <b>comma</b> delimiter.
                 <div
                   class="mt-3 rounded-xl bg-slate-900/5 dark:bg-white/5 ring-1 ring-slate-200/60 dark:ring-white/10 overflow-hidden"
                 >
                   <div
                     class="px-3 py-2 text-[11px] font-semibold text-slate-600 dark:text-slate-300 bg-slate-900/5 dark:bg-white/5"
                   >
-                    Contoh 5 baris
+                    Example: 5 rows
                   </div>
                   <pre
-                    class="px-3 py-3 text-[12px] leading-5 text-slate-800 dark:text-slate-100 overflow-auto max-h-32"
+                    class="px-3 py-3 text-[11px] sm:text-[12px] leading-5 text-slate-800 dark:text-slate-100 overflow-auto max-h-40 sm:max-h-48"
                   ><code>EmployeeName,Age,Department,JobRole,JobLevel,MonthlyIncome,OverTime,WorkLifeBalance,YearsAtCompany,YearsWithCurrManager
-"Rizky A",32,"Sales","Sales Executive",2,8400,Yes,Good,4,2
-"Vania D",29,"R&amp;D","Research Scientist",1,6100,No,Better,2,1
-"Adit K",41,"HR","Human Resources",3,12500,No,Best,8,5
-"Intan P",35,"R&amp;D","Laboratory Technician",2,7200,Yes,Satisfied,5,3
-"Rudi S",26,"Sales","Sales Representative",1,5200,No,Good,1,1</code></pre>
+"John D",32,"Sales","Sales Executive",2,8400,Yes,Good,4,2
+"Anna S",29,"R&amp;D","Research Scientist",1,6100,No,Better,2,1
+"Michael B",41,"HR","Human Resources",3,12500,No,Best,8,5
+"Sarah T",35,"R&amp;D","Laboratory Technician",2,7200,Yes,Satisfied,5,3
+"David R",26,"Sales","Sales Representative",1,5200,No,Good,1,1</code></pre>
                 </div>
               </div>
 
-              <!-- footer -->
               <div class="mt-4 flex flex-wrap gap-3">
                 <a
-                  href="{{ url_for('static', filename='Sample.csv') }}"
+                  href="{{ url_for('static', filename='template_attrition.csv') }}"
                   download
-                  class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 transition"
                 >
                   Download Template CSV
                 </a>
                 <a
-                  href="#struktur-lengkap"
-                  class="inline-flex items-center justify-center rounded-xl border border-slate-300/70 bg-slate-50/60 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 dark:border-white/10"
+                  href="#full-structure"
+                  class="inline-flex items-center justify-center rounded-xl border border-slate-300/70 bg-slate-50/60 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 dark:border-white/10 transition"
                 >
-                  Lihat Struktur Lengkap →
+                  View Full Structure →
                 </a>
               </div>
             </article>
           </li>
 
-          <!-- STEP 2  -->
-          <li>
+          <!-- STEP 2 -->
+          <li
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-100"
+          >
             <article
-              class="min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-cyan-100/70 via-cyan-50/50 to-blue-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-cyan-200/60 shadow-sm p-6 flex flex-col"
+              class="min-h-[280px] sm:min-h-[300px] lg:min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-cyan-100/70 via-cyan-50/50 to-blue-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-cyan-200/60 shadow-sm p-5 sm:p-6 flex flex-col transition-transform duration-500 hover:-translate-y-0.5"
             >
               <div class="flex items-center gap-3">
                 <div
@@ -748,16 +809,16 @@
                   2
                 </div>
                 <h3
-                  class="text-xl font-semibold text-cyan-800 dark:text-cyan-100"
+                  class="text-lg sm:text-xl font-semibold text-cyan-800 dark:text-cyan-100"
                 >
-                  Lengkapi Kolom
+                  Fill the Columns
                 </h3>
               </div>
 
               <p class="mt-2 text-sm text-slate-700 dark:text-slate-200">
-                18 kolom wajib + 1 opsional (<span class="font-medium"
+                18 required columns + 1 optional (<span class="font-medium"
                   >EmployeeName</span
-                >). Header harus <b>case-sensitive</b>.
+                >). Headers must be <b>case-sensitive</b>.
               </p>
 
               <ul
@@ -767,25 +828,25 @@
                   class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
                 >
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  Demografi (Age, MaritalStatus)
+                  Demographics (Age, MaritalStatus)
                 </li>
                 <li
                   class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
                 >
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  Peran &amp; Level (JobRole, JobLevel)
+                  Role & Level (JobRole, JobLevel)
                 </li>
                 <li
                   class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
                 >
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  Kompensasi (MonthlyIncome, DailyRate)
+                  Compensation (MonthlyIncome, DailyRate)
                 </li>
                 <li
                   class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
                 >
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  Keseimbangan (OverTime, WorkLifeBalance)
+                  Work-Life Balance (OverTime, WorkLifeBalance)
                 </li>
                 <li
                   class="inline-flex items-center gap-2 rounded-lg bg-slate-900/5 dark:bg-white/5 px-3 py-2 ring-1 ring-slate-200/60 dark:ring-white/10"
@@ -795,7 +856,7 @@
                 </li>
               </ul>
 
-              <!-- Toggle (no-JS modal) -->
+              <!-- Modal toggle -->
               <input
                 id="supported-toggle"
                 type="checkbox"
@@ -807,7 +868,7 @@
                   for="supported-toggle"
                   class="inline-flex w-full items-center justify-between rounded-xl border border-slate-300/60 bg-slate-100/60 px-4 py-3 text-left text-sm font-medium text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 cursor-pointer dark:bg-white/10 dark:text-white dark:border-white/10"
                 >
-                  <span>Nilai yang didukung (kategori)</span>
+                  <span>Supported Values (categories)</span>
                   <span
                     class="inline-flex items-center gap-1 text-cyan-700 dark:text-cyan-200"
                   >
@@ -827,13 +888,13 @@
                       <circle cx="12" cy="12" r="3"></circle>
                     </svg>
                     <span class="hidden sm:inline text-xs font-semibold"
-                      >Lihat</span
+                      >View</span
                     >
                   </span>
                 </label>
               </div>
 
-              <!-- MODAL (CSS-only) -->
+              <!-- Modal (CSS only) -->
               <div
                 role="dialog"
                 aria-modal="true"
@@ -848,29 +909,29 @@
 
                 <!-- dialog -->
                 <div
-                  class="relative mx-4 w-full max-w-2xl rounded-2xl bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shadow-xl"
+                  class="relative mx-3 sm:mx-4 w-full max-w-lg sm:max-w-2xl rounded-2xl bg-white dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shadow-xl"
                 >
                   <!-- Header -->
                   <div
-                    class="flex items-center justify-between px-5 py-4 bg-slate-900/5 dark:bg-white/5 border-b border-slate-200/60 dark:border-white/10"
+                    class="flex items-center justify-between px-4 sm:px-5 py-4 bg-slate-900/5 dark:bg-white/5 border-b border-slate-200/60 dark:border-white/10"
                   >
                     <h4
                       id="supported-title"
                       class="text-base font-semibold text-slate-800 dark:text-slate-100"
                     >
-                      Nilai yang Didukung (Kategori)
+                      Supported Values (Categories)
                     </h4>
                     <label
                       for="supported-toggle"
                       class="inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-600 dark:text-slate-200 hover:bg-slate-900/5 hover:ring-1 hover:ring-slate-200/60 dark:hover:ring-white/10 cursor-pointer"
-                      aria-label="Tutup"
+                      aria-label="Close"
                       >✕</label
                     >
                   </div>
 
                   <!-- Body -->
-                  <div class="p-5">
-                    <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                  <div class="p-4 sm:p-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                       <div
                         class="rounded-lg bg-slate-900/5 dark:bg-white/10 p-3 ring-1 ring-slate-100/60 dark:ring-white/10"
                       >
@@ -939,13 +1000,13 @@
 
                   <!-- Footer -->
                   <div
-                    class="px-5 py-4 border-t border-slate-200/60 dark:border-white/10 flex justify-end gap-2"
+                    class="px-4 sm:px-5 py-4 border-t border-slate-200/60 dark:border-white/10 flex justify-end gap-2"
                   >
                     <label
                       for="supported-toggle"
                       class="inline-flex items-center justify-center rounded-xl border border-slate-300/70 bg-slate-50/60 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50 cursor-pointer dark:bg-white/10 dark:text-white dark:hover:bg-white/15 dark:border-white/10"
                     >
-                      Tutup
+                      Close
                     </label>
                   </div>
                 </div>
@@ -954,9 +1015,11 @@
           </li>
 
           <!-- STEP 3 -->
-          <li>
+          <li
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-200"
+          >
             <article
-              class="min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-emerald-100/70 via-emerald-50/50 to-cyan-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-emerald-200/60 shadow-sm p-6 flex flex-col"
+              class="min-h-[280px] sm:min-h-[300px] lg:min-h-[320px] h-full rounded-2xl bg-gradient-to-br from-emerald-100/70 via-emerald-50/50 to-cyan-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 backdrop-blur ring-1 ring-emerald-200/60 shadow-sm p-5 sm:p-6 flex flex-col transition-transform duration-500 hover:-translate-y-0.5"
             >
               <div class="flex items-center gap-3">
                 <div
@@ -965,44 +1028,43 @@
                   3
                 </div>
                 <h3
-                  class="text-xl font-semibold text-emerald-800 dark:text-emerald-100"
+                  class="text-lg sm:text-xl font-semibold text-emerald-800 dark:text-emerald-100"
                 >
-                  Unggah &amp; Validasi
+                  Upload & Validate
                 </h3>
               </div>
 
               <p class="mt-2 text-sm text-slate-700 dark:text-slate-200">
-                Sistem memeriksa header, tipe data, dan kategori tidak dikenal.
+                The system checks headers, data types, and unknown categories.
               </p>
 
               <div class="mt-4 flex flex-wrap gap-3">
                 <a
                   href="#upload-csv"
-                  class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 px-4 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-                  >Buka Form Upload</a
+                  class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 px-4 py-2.5 text-sm font-semibold text-black shadow-sm hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 transition"
+                  >Open Upload Form</a
                 >
                 <span
                   class="inline-flex items-center rounded-xl px-3 py-2 text-[12px] font-medium text-emerald-800 bg-emerald-100/70 ring-1 ring-emerald-200/60 dark:text-emerald-200 dark:bg-white/10 dark:ring-white/10"
-                  >Validasi real-time</span
+                  >Real-time validation</span
                 >
               </div>
               <p class="mt-3 mb-0 text-xs text-slate-600 dark:text-slate-300">
-                File akhir: <code>.csv</code> UTF-8, koma, maks. 5MB / 50k
-                baris.
+                Final file: <code>.csv</code> UTF-8, comma, max. 5MB / 50k rows.
               </p>
             </article>
           </li>
         </ol>
 
-        <!-- ROW 3: Struktur lengkap -->
+        <!-- Full structure -->
         <div
-          id="struktur-lengkap"
-          class="mt-10 rounded-2xl p-6 bg-slate-100/70 dark:bg-white/5 backdrop-blur ring-1 ring-slate-200/70 dark:ring-white/10"
+          id="full-structure"
+          class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out mt-10 rounded-2xl p-5 sm:p-6 bg-slate-100/70 dark:bg-white/5 backdrop-blur ring-1 ring-slate-200/70 dark:ring-white/10"
         >
           <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
-            Struktur Kolom Lengkap
+            Full Column Structure
           </h3>
-          <div class="mt-4 grid gap-6 sm:grid-cols-2 text-sm">
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
             <ul class="space-y-1.5 text-slate-700 dark:text-slate-200">
               <li>Age</li>
               <li>DailyRate</li>
@@ -1026,7 +1088,7 @@
               <li>YearsInCurrentRole</li>
               <li>YearsWithCurrManager</li>
               <li class="text-slate-500 dark:text-slate-400">
-                EmployeeName <span class="text-xs">(opsional)</span>
+                EmployeeName <span class="text-xs">(optional)</span>
               </li>
             </ul>
           </div>
@@ -1048,41 +1110,43 @@
     >
       <!-- texture + glows (match hero) -->
       <div
-        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen animate-pulse motion-reduce:animate-none"
         aria-hidden="true"
       ></div>
       <div
-        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
         aria-hidden="true"
+        data-parallax="up"
       ></div>
       <div
-        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
         aria-hidden="true"
+        data-parallax="down"
       ></div>
 
       <div class="mx-auto max-w-6xl px-6">
         <h2
           id="model-title"
-          class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out text-center text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
         >
-          Model
+          Models
           <span
             class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-cyan-200 dark:to-yellow-200"
-            >yang Digunakan</span
+            >Used</span
           >
         </h2>
-        <p class="mt-3 text-center text-slate-700 dark:text-slate-200">
-          Peringkat berdasarkan
-          <span class="font-semibold">Accuracy</span> &amp;
+        <p
+          class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-100 mt-3 text-center text-slate-700 dark:text-slate-200"
+        >
+          Ranked by <span class="font-semibold">Accuracy</span> &amp;
           <span class="font-semibold">F1</span>;
-          <span class="whitespace-nowrap">AUC</span> sebagai pemeriksaan
-          tambahan.
+          <span class="whitespace-nowrap">AUC</span> as an additional check.
         </p>
 
         <div class="mt-10 grid gap-6 lg:grid-cols-12 items-stretch">
-          <!-- Best model (lebih lebar) -->
+          <!-- Best model (wider) -->
           <article
-            class="relative lg:col-span-7 rounded-2xl p-6 shadow-sm backdrop-blur bg-gradient-to-br from-amber-100/70 via-amber-50/50 to-yellow-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 ring-1 ring-amber-200/70"
+            class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out relative lg:col-span-7 rounded-2xl p-6 shadow-sm backdrop-blur bg-gradient-to-br from-amber-100/70 via-amber-50/50 to-yellow-50/40 dark:from-white/10 dark:via-white/5 dark:to-white/5 ring-1 ring-amber-200/70"
           >
             <span
               class="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full bg-amber-100/80 text-amber-900 px-2 py-1 text-[11px] font-bold ring-1 ring-amber-200"
@@ -1100,7 +1164,7 @@
                   🌳 Random Forest
                 </h3>
                 <p class="mt-1 text-slate-600 dark:text-slate-300">
-                  Performa keseluruhan terbaik pada data kami.
+                  Best overall performance on our data.
                 </p>
               </div>
             </div>
@@ -1157,7 +1221,7 @@
               </div>
             </div>
 
-            <!-- Bars -->
+            <!-- Bars (animated fill) -->
             <div class="mt-5 space-y-3">
               <div>
                 <div
@@ -1174,8 +1238,9 @@
                   aria-label="Accuracy RF"
                 >
                   <div
-                    class="h-2 rounded-full bg-emerald-500"
-                    style="width: 86.73%"
+                    class="h-2 rounded-full bg-emerald-500 transition-all duration-1000 ease-out"
+                    style="width: 0%"
+                    data-w="86.73%"
                   ></div>
                 </div>
               </div>
@@ -1194,8 +1259,9 @@
                   aria-label="F1 RF"
                 >
                   <div
-                    class="h-2 rounded-full bg-blue-500"
-                    style="width: 84.84%"
+                    class="h-2 rounded-full bg-blue-500 transition-all duration-1000 ease-out"
+                    style="width: 0%"
+                    data-w="84.84%"
                   ></div>
                 </div>
               </div>
@@ -1214,8 +1280,9 @@
                   aria-label="AUC RF"
                 >
                   <div
-                    class="h-2 rounded-full bg-indigo-500"
-                    style="width: 74%"
+                    class="h-2 rounded-full bg-indigo-500 transition-all duration-1000 ease-out"
+                    style="width: 0%"
+                    data-w="74%"
                   ></div>
                 </div>
               </div>
@@ -1223,27 +1290,27 @@
 
             <div class="mt-5 flex flex-wrap gap-2">
               <a
-                href="#prediksi"
+                href="#prediction"
                 class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 px-4 py-2.5 text-sm font-semibold shadow-lg ring-1 ring-black/5 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300"
               >
-                Gunakan Model Ini
+                Use This Model
               </a>
               <a
-                href="#fitur-data"
+                href="#features-data"
                 class="inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 dark:text-white ring-1 ring-slate-300/70 dark:ring-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
               >
-                Lihat Fitur →
+                View Features →
               </a>
             </div>
           </article>
 
-          <!-- Candidates (grid tinggi-rata) -->
+          <!-- Candidates (balanced grid) -->
           <div
             class="lg:col-span-5 grid gap-6 sm:grid-cols-2 [grid-auto-rows:minmax(0,1fr)]"
           >
             <!-- Gradient Boosting -->
             <article
-              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+              class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-100 flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
               <h3
                 class="text-lg font-semibold text-pink-700 dark:text-pink-300"
@@ -1285,14 +1352,12 @@
                 <div
                   class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
                   role="progressbar"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
                   aria-valuenow="74.3"
-                  aria-label="AUC GB"
                 >
                   <div
-                    class="h-2 rounded-full bg-indigo-500"
-                    style="width: 74.3%"
+                    class="h-2 rounded-full bg-indigo-500 transition-all duration-1000 ease-out"
+                    style="width: 0%"
+                    data-w="74.3%"
                   ></div>
                 </div>
               </div>
@@ -1305,7 +1370,7 @@
 
             <!-- SVM -->
             <article
-              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+              class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-200 flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
               <h3
                 class="text-lg font-semibold text-purple-700 dark:text-purple-300"
@@ -1347,14 +1412,12 @@
                 <div
                   class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
                   role="progressbar"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
                   aria-valuenow="72.4"
-                  aria-label="AUC SVM"
                 >
                   <div
-                    class="h-2 rounded-full bg-indigo-500"
-                    style="width: 72.4%"
+                    class="h-2 rounded-full bg-indigo-500 transition-all duration-1000 ease-out"
+                    style="width: 0%"
+                    data-w="72.4%"
                   ></div>
                 </div>
               </div>
@@ -1367,7 +1430,7 @@
 
             <!-- Logistic Regression -->
             <article
-              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+              class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-300 flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
               <h3
                 class="text-lg font-semibold text-blue-700 dark:text-blue-300"
@@ -1409,14 +1472,12 @@
                 <div
                   class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
                   role="progressbar"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
                   aria-valuenow="74.8"
-                  aria-label="AUC LR"
                 >
                   <div
-                    class="h-2 rounded-full bg-indigo-500"
-                    style="width: 74.8%"
+                    class="h-2 rounded-full bg-indigo-500 transition-all duration-1000 ease-out"
+                    style="width: 0%"
+                    data-w="74.8%"
                   ></div>
                 </div>
               </div>
@@ -1429,7 +1490,7 @@
 
             <!-- KNN -->
             <article
-              class="flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+              class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-400 flex flex-col rounded-2xl h-full p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
               <h3
                 class="text-lg font-semibold text-orange-700 dark:text-orange-300"
@@ -1471,14 +1532,12 @@
                 <div
                   class="mt-1 h-2 w-full rounded-full bg-slate-900/10 dark:bg-white/10"
                   role="progressbar"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
                   aria-valuenow="66.3"
-                  aria-label="AUC KNN"
                 >
                   <div
-                    class="h-2 rounded-full bg-indigo-500"
-                    style="width: 66.3%"
+                    class="h-2 rounded-full bg-indigo-500 transition-all duration-1000 ease-out"
+                    style="width: 0%"
+                    data-w="66.3%"
                   ></div>
                 </div>
               </div>
@@ -1499,44 +1558,48 @@
       ></div>
     </section>
 
-    <!-- Cara Kerja -->
+    <!-- How It Works -->
     <section
-      id="cara-kerja"
+      id="how-it-works"
       class="relative scroll-mt-24 py-20 text-slate-800 overflow-hidden bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
       aria-labelledby="how-title"
     >
       <!-- texture + glows -->
       <div
-        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
+        class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen animate-pulse motion-reduce:animate-none"
         aria-hidden="true"
       ></div>
       <div
-        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
         aria-hidden="true"
+        data-parallax="up"
       ></div>
       <div
-        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
         aria-hidden="true"
+        data-parallax="down"
       ></div>
 
       <div class="mx-auto max-w-6xl px-6">
         <h2
           id="how-title"
-          class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+          class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out text-center text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
         >
-          Cara
+          How
           <span
             class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-cyan-200 dark:to-yellow-200"
-            >Kerja</span
+            >It Works</span
           >
         </h2>
-        <p class="mt-3 text-center text-slate-700 dark:text-slate-200">
-          Tiga langkah sederhana dari input data hingga keputusan.
+        <p
+          class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-100 mt-3 text-center text-slate-700 dark:text-slate-200"
+        >
+          Three simple steps from data input to decision.
         </p>
 
-        <!-- wrapper untuk garis konektor -->
+        <!-- wrapper for connector line -->
         <div class="relative mt-10">
-          <!-- garis konektor (desktop) -->
+          <!-- connector line (desktop) -->
           <div
             class="pointer-events-none absolute top-8 left-24 right-24 hidden md:block"
           >
@@ -1548,12 +1611,12 @@
           <div
             class="grid gap-6 md:grid-cols-3 items-stretch"
             role="list"
-            aria-label="Langkah proses"
+            aria-label="Process steps"
           >
             <!-- Step 1 -->
             <article
               role="listitem"
-              class="group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 transition-shadow hover:shadow-md"
+              class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
               <header class="flex flex-col items-center text-center">
                 <span
@@ -1574,28 +1637,28 @@
                 <h3
                   class="mt-3 text-lg font-semibold text-slate-900 dark:text-white"
                 >
-                  Kumpulkan Data
+                  Collect Data
                 </h3>
                 <p class="mt-1 text-slate-600 dark:text-slate-300">
-                  Masukkan usia, jabatan, pendapatan, dll. atau gunakan
+                  Enter age, position, income, etc., or use the
                   <a
                     href="#fitur"
                     class="underline decoration-blue-300 underline-offset-2 hover:text-blue-700 dark:hover:text-cyan-300"
-                    >Template CSV</a
+                    >CSV Template</a
                   >.
                 </p>
               </header>
               <footer
                 class="mt-auto pt-4 border-t border-slate-200/60 dark:border-white/10 text-[12px] text-slate-500 dark:text-slate-400"
               >
-                Format: CSV UTF-8, delimiter koma.
+                Format: CSV UTF-8, comma delimiter.
               </footer>
             </article>
 
             <!-- Step 2 -->
             <article
               role="listitem"
-              class="group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 transition-shadow hover:shadow-md"
+              class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
               <header class="flex flex-col items-center text-center">
                 <span
@@ -1614,24 +1677,24 @@
                 <h3
                   class="mt-3 text-lg font-semibold text-slate-900 dark:text-white"
                 >
-                  Analisis AI
+                  AI Analysis
                 </h3>
                 <p class="mt-1 text-slate-600 dark:text-slate-300">
-                  Model memproses data &amp; menghasilkan prediksi risiko
-                  attrition + confidence.
+                  The model processes data and generates attrition risk
+                  predictions + confidence.
                 </p>
               </header>
               <footer
                 class="mt-auto pt-4 border-t border-slate-200/60 dark:border-white/10 text-[12px] text-slate-500 dark:text-slate-400"
               >
-                Akurasi &amp; F1 divalidasi cross-val.
+                Accuracy &amp; F1 validated via cross-val.
               </footer>
             </article>
 
             <!-- Step 3 -->
             <article
               role="listitem"
-              class="group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 transition-shadow hover:shadow-md"
+              class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-200 group relative flex h-full flex-col rounded-2xl p-6 shadow-sm backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 hover:-translate-y-0.5 transition-transform"
             >
               <header class="flex flex-col items-center text-center">
                 <span
@@ -1651,28 +1714,30 @@
                 <h3
                   class="mt-3 text-lg font-semibold text-slate-900 dark:text-white"
                 >
-                  Ambil Keputusan
+                  Make Decisions
                 </h3>
                 <p class="mt-1 text-slate-600 dark:text-slate-300">
-                  Gunakan rekomendasi retensi dan unduh laporan/hasil untuk
-                  dibagikan.
+                  Use retention recommendations and download reports/results to
+                  share.
                 </p>
               </header>
               <footer
                 class="mt-auto pt-4 border-t border-slate-200/60 dark:border-white/10 text-[12px] text-slate-500 dark:text-slate-400"
               >
-                Tersedia ringkasan &amp; export.
+                Summary &amp; export available.
               </footer>
             </article>
           </div>
         </div>
 
-        <div class="mt-12 text-center">
+        <div
+          class="reveal opacity-0 translate-y-4 transition-all duration-700 ease-out delay-300 mt-12 text-center"
+        >
           <a
-            href="#prediksi"
+            href="#upload-csv"
             class="inline-flex items-center justify-center rounded-xl px-8 py-3 font-semibold shadow-lg ring-1 ring-black/5 bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 hover:translate-y-[-1px] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-300"
           >
-            Mulai Prediksi
+            Start Prediction
           </a>
         </div>
       </div>
@@ -1684,24 +1749,28 @@
       ></div>
     </section>
 
-    <!-- Form Prediksi Single -->
+    <!-- Single Prediction Form -->
     <section
-      id="prediksi"
+      id="prediction"
       class="relative py-20 overflow-hidden text-slate-800 bg-gradient-to-br from-indigo-50 via-cyan-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
     >
-      <!-- dekorasi bg -->
+      <!-- background decoration -->
       <div
         class="absolute inset-0 -z-10 opacity-20 mix-blend-multiply bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dot-grid.png')] dark:opacity-15 dark:mix-blend-screen"
       ></div>
       <div
-        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30"
+        class="pointer-events-none absolute -top-24 -right-20 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-20 bg-gradient-to-tr from-cyan-300/40 via-sky-400/30 to-yellow-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
+        data-parallax="up"
       ></div>
       <div
-        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30"
+        class="pointer-events-none absolute -bottom-28 -left-16 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-15 bg-gradient-to-br from-indigo-400/30 via-blue-300/30 to-cyan-300/30 transition-transform duration-[2000ms] ease-in-out will-change-transform"
+        data-parallax="down"
       ></div>
 
       <div class="mx-auto max-w-5xl px-6">
-        <header class="text-center space-y-3 mb-10">
+        <header
+          class="text-center space-y-3 mb-10 reveal opacity-0 translate-y-3 transition-all duration-700"
+        >
           <h2
             class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white"
           >
@@ -1712,20 +1781,25 @@
             >
           </h2>
           <p class="text-slate-600 dark:text-slate-200 text-sm md:text-base">
-            Isi 4 langkah singkat, lalu review dulu sebelum prediksi.
+            Fill in 4 quick steps, then review before prediction.
           </p>
         </header>
 
-        <!-- Stepper: 5 langkah -->
-        <!-- Stepper: 5 langkah -->
+        <!-- Stepper: 5 steps -->
         <div
           class="relative mb-6"
           role="list"
-          aria-label="Langkah Form Prediksi"
+          aria-label="Prediction Form Steps"
         >
-          <!-- garis belakang, pastikan tidak intercept klik -->
+          <!-- background line -->
           <div
             class="absolute inset-x-0 top-4 h-1 rounded-full bg-slate-200 pointer-events-none"
+          ></div>
+          <!-- progress line -->
+          <div
+            id="stepProgress"
+            class="absolute left-0 top-4 h-1 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 transition-all duration-500 ease-out pointer-events-none"
+            style="width: 0%"
           ></div>
 
           <ol class="relative z-10 grid grid-cols-5 gap-2">
@@ -1736,40 +1810,36 @@
               aria-current="step"
             >
               <div
-                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-bold ring-4 ring-white"
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white font-bold ring-4 ring-white shadow transition-transform duration-300"
               >
                 1
               </div>
               <div class="mt-2 text-xs font-medium text-slate-700">
-                Data Pribadi
+                Personal Data
               </div>
             </li>
 
             <li class="step text-center" data-step="2" role="listitem">
               <div
-                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white transition-transform duration-300"
               >
                 2
               </div>
-              <div class="mt-2 text-xs font-medium text-slate-700">
-                Pekerjaan
-              </div>
+              <div class="mt-2 text-xs font-medium text-slate-700">Job</div>
             </li>
 
             <li class="step text-center" data-step="3" role="listitem">
               <div
-                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white transition-transform duration-300"
               >
                 3
               </div>
-              <div class="mt-2 text-xs font-medium text-slate-700">
-                Finansial
-              </div>
+              <div class="mt-2 text-xs font-medium text-slate-700">Finance</div>
             </li>
 
             <li class="step text-center" data-step="4" role="listitem">
               <div
-                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white transition-transform duration-300"
               >
                 4
               </div>
@@ -1780,7 +1850,7 @@
 
             <li class="step text-center" data-step="5" role="listitem">
               <div
-                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white"
+                class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-white font-bold ring-4 ring-white transition-transform duration-300"
               >
                 5
               </div>
@@ -1789,15 +1859,15 @@
           </ol>
         </div>
 
-        <!-- Kartu form -->
+        <!-- Form Card -->
         <form
           id="predictForm"
-          class="mx-auto max-w-4xl rounded-2xl border p-6 md:p-8 shadow-sm space-y-6 backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 border-transparent"
+          class="reveal opacity-0 translate-y-3 transition-all duration-700 mx-auto max-w-4xl rounded-2xl border p-6 md:p-8 shadow-sm space-y-6 backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/60 dark:ring-white/10 border-transparent"
           aria-describedby="formHelp"
         >
           <p id="formHelp" class="sr-only">
-            Progress otomatis tersimpan. Pakai tombol Selanjutnya/Sebelumnya
-            untuk pindah langkah.
+            Progress is saved automatically. Use Next/Previous buttons to move
+            between steps.
           </p>
 
           <!-- STEP 1 -->
@@ -1805,7 +1875,7 @@
             <legend
               class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
             >
-              👤 Data Pribadi
+              👤 Personal Data
             </legend>
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
               <div class="md:col-span-2">
@@ -1813,16 +1883,16 @@
                   for="EmployeeName"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
                 >
-                  Nama
-                  <span class="text-slate-400 font-normal">(opsional)</span>
+                  Name
+                  <span class="text-slate-400 font-normal">(optional)</span>
                 </label>
                 <input
                   id="EmployeeName"
                   name="EmployeeName"
                   type="text"
                   autocomplete="name"
-                  placeholder="Masukkan nama karyawan"
-                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                  placeholder="Enter employee name"
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white transition-shadow focus:shadow-sm"
                 />
               </div>
 
@@ -1831,7 +1901,7 @@
                   for="Age"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
                 >
-                  Usia <span class="text-slate-400 text-xs">(18–60)</span>
+                  Age <span class="text-slate-400 text-xs">(18–60)</span>
                   <span class="text-rose-500">*</span>
                 </label>
                 <input
@@ -1841,8 +1911,8 @@
                   min="18"
                   max="60"
                   required
-                  placeholder="Contoh: 28"
-                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                  placeholder="Example: 28"
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white transition-all"
                   aria-describedby="ageHelp"
                 />
                 <p
@@ -1850,7 +1920,7 @@
                   class="mt-1 text-xs text-rose-600 hidden"
                   role="alert"
                 >
-                  Usia harus antara 18–60 tahun.
+                  Age must be between 18–60 years.
                 </p>
               </div>
 
@@ -1858,17 +1928,15 @@
                 <label
                   for="MaritalStatus"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Marital Status <span class="text-rose-500">*</span></label
                 >
-                  Status Pernikahan <span class="text-rose-500">*</span>
-                </label>
-
                 <select
                   id="MaritalStatus"
                   name="MaritalStatus"
                   required
-                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/60 ring-1 ring-slate-300/60 bg-slate-900/5 hover:bg-slate-900/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/10 dark:hover:bg-white/15 dark:text-white dark:border-white/10 dark:ring-white/10"
+                  class="mt-1 w-full rounded-lg p-3 border border-slate-300/60 ring-1 ring-slate-300/60 bg-slate-900/5 hover:bg-slate-900/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/10 dark:hover:bg-white/15 dark:text-white dark:border-white/10 dark:ring-white/10 transition"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Married</option>
                   <option>Single</option>
                   <option>Divorced</option>
@@ -1878,27 +1946,29 @@
           </fieldset>
 
           <!-- STEP 2 -->
-          <fieldset class="form-step hidden" data-step="2">
+          <fieldset
+            class="form-step hidden opacity-0 scale-[0.98]"
+            data-step="2"
+          >
             <legend
               class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
             >
-              💼 Pekerjaan
+              💼 Job
             </legend>
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
                 <label
                   for="Department"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Department <span class="text-rose-500">*</span></label
                 >
-                  Departemen <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="Department"
                   name="Department"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Human Resources</option>
                   <option>Research & Development</option>
                   <option>Sales</option>
@@ -1909,16 +1979,15 @@
                 <label
                   for="JobRole"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Job Role <span class="text-rose-500">*</span></label
                 >
-                  Job Role <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="JobRole"
                   name="JobRole"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Healthcare Representative</option>
                   <option>Human Resources</option>
                   <option>Laboratory Technician</option>
@@ -1935,16 +2004,15 @@
                 <label
                   for="JobLevel"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Job Level <span class="text-rose-500">*</span></label
                 >
-                  Level Jabatan <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="JobLevel"
                   name="JobLevel"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Level 1</option>
                   <option>Level 2</option>
                   <option>Level 3</option>
@@ -1957,16 +2025,15 @@
                 <label
                   for="JobInvolvement"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Job Involvement <span class="text-rose-500">*</span></label
                 >
-                  Keterlibatan Kerja <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="JobInvolvement"
                   name="JobInvolvement"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Low</option>
                   <option>Medium</option>
                   <option>High</option>
@@ -1978,16 +2045,15 @@
                 <label
                   for="JobSatisfaction"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Job Satisfaction <span class="text-rose-500">*</span></label
                 >
-                  Kepuasan Kerja <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="JobSatisfaction"
                   name="JobSatisfaction"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Very Dissatisfied</option>
                   <option>Dissatisfied</option>
                   <option>Satisfied</option>
@@ -1998,26 +2064,28 @@
           </fieldset>
 
           <!-- STEP 3 -->
-          <fieldset class="form-step hidden" data-step="3">
+          <fieldset
+            class="form-step hidden opacity-0 scale-[0.98]"
+            data-step="3"
+          >
             <legend
               class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
             >
-              💰 Finansial & Lainnya
+              💰 Finance & Others
             </legend>
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
                 <label
                   for="MonthlyIncome"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Monthly Income <span class="text-rose-500">*</span></label
                 >
-                  Pendapatan Bulanan <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="MonthlyIncome"
                   name="MonthlyIncome"
                   type="number"
                   required
-                  placeholder="Contoh: 8500000"
+                  placeholder="Example: 8500000"
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 placeholder:text-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 />
               </div>
@@ -2026,9 +2094,8 @@
                 <label
                   for="DailyRate"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Daily Rate <span class="text-rose-500">*</span></label
                 >
-                  Daily Rate <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="DailyRate"
                   name="DailyRate"
@@ -2042,16 +2109,16 @@
                 <label
                   for="StockOptionLevel"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Stock Option Level
+                  <span class="text-rose-500">*</span></label
                 >
-                  Level Opsi Saham <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="StockOptionLevel"
                   name="StockOptionLevel"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Level 0</option>
                   <option>Level 1</option>
                   <option>Level 2</option>
@@ -2062,7 +2129,10 @@
           </fieldset>
 
           <!-- STEP 4 -->
-          <fieldset class="form-step hidden" data-step="4">
+          <fieldset
+            class="form-step hidden opacity-0 scale-[0.98]"
+            data-step="4"
+          >
             <legend
               class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
             >
@@ -2073,9 +2143,9 @@
                 <label
                   for="DistanceFromHome"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Distance from Home (km)
+                  <span class="text-rose-500">*</span></label
                 >
-                  Jarak dari Rumah (km) <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="DistanceFromHome"
                   name="DistanceFromHome"
@@ -2089,16 +2159,16 @@
                 <label
                   for="EnvironmentSatisfaction"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Environment Satisfaction
+                  <span class="text-rose-500">*</span></label
                 >
-                  Kepuasan Lingkungan <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="EnvironmentSatisfaction"
                   name="EnvironmentSatisfaction"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Very Dissatisfied</option>
                   <option>Dissatisfied</option>
                   <option>Satisfied</option>
@@ -2110,16 +2180,15 @@
                 <label
                   for="OverTime"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Overtime <span class="text-rose-500">*</span></label
                 >
-                  Lembur <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="OverTime"
                   name="OverTime"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>No</option>
                   <option>Yes</option>
                 </select>
@@ -2129,9 +2198,9 @@
                 <label
                   for="TotalWorkingYears"
                   class="block text sm font-medium text-slate-700 dark:text-slate-200"
+                  >Total Working Years
+                  <span class="text-rose-500">*</span></label
                 >
-                  Total Tahun Kerja <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="TotalWorkingYears"
                   name="TotalWorkingYears"
@@ -2145,9 +2214,9 @@
                 <label
                   for="TrainingTimesLastYear"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Training Times Last Year
+                  <span class="text-rose-500">*</span></label
                 >
-                  Pelatihan Tahun Lalu <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="TrainingTimesLastYear"
                   name="TrainingTimesLastYear"
@@ -2161,16 +2230,15 @@
                 <label
                   for="WorkLifeBalance"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Work-Life Balance <span class="text-rose-500">*</span></label
                 >
-                  Work Life Balance <span class="text-rose-500">*</span>
-                </label>
                 <select
                   id="WorkLifeBalance"
                   name="WorkLifeBalance"
                   required
                   class="mt-1 w-full rounded-lg p-3 border border-slate-300/70 bg-white/90 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400/50 dark:bg-white/5 dark:border-white/10 dark:text-white"
                 >
-                  <option value="">Pilih</option>
+                  <option value="">Select</option>
                   <option>Bad</option>
                   <option>Good</option>
                   <option>Better</option>
@@ -2182,9 +2250,8 @@
                 <label
                   for="YearsAtCompany"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Years at Company <span class="text-rose-500">*</span></label
                 >
-                  Tahun di Perusahaan <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="YearsAtCompany"
                   name="YearsAtCompany"
@@ -2198,9 +2265,9 @@
                 <label
                   for="YearsInCurrentRole"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Years in Current Role
+                  <span class="text-rose-500">*</span></label
                 >
-                  Tahun di Role Saat Ini <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="YearsInCurrentRole"
                   name="YearsInCurrentRole"
@@ -2214,10 +2281,9 @@
                 <label
                   for="YearsWithCurrManager"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Years with Current Manager
+                  <span class="text-rose-500">*</span></label
                 >
-                  Tahun dengan Manager Saat Ini
-                  <span class="text-rose-500">*</span>
-                </label>
                 <input
                   id="YearsWithCurrManager"
                   name="YearsWithCurrManager"
@@ -2231,21 +2297,21 @@
 
           <!-- STEP 5 (REVIEW) -->
           <fieldset
-            class="form-step hidden text-slate-800 dark:text-slate-100"
+            class="form-step hidden opacity-0 scale-[0.98] text-slate-800 dark:text-slate-100"
             data-step="5"
             aria-describedby="reviewHint"
           >
             <legend
               class="text-base md:text-lg font-semibold text-indigo-600 dark:text-cyan-200"
             >
-              🧾 Review & Konfirmasi
+              🧾 Review & Confirmation
             </legend>
             <p
               id="reviewHint"
               class="mt-1 text-sm text-slate-600 dark:text-slate-300"
             >
-              Cek ringkasan di bawah. Klik “Ubah” bila ada yang perlu
-              diperbaiki.
+              Check the summary below. Click “Edit” if something needs
+              correction.
             </p>
 
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -2255,14 +2321,14 @@
               >
                 <header class="flex items-center justify-between">
                   <h4 class="font-semibold text-slate-900 dark:text-cyan-200">
-                    Data Pribadi
+                    Personal Data
                   </h4>
                   <button
                     type="button"
                     class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
                     data-goto-step="1"
                   >
-                    Ubah
+                    Edit
                   </button>
                 </header>
                 <dl
@@ -2277,14 +2343,14 @@
               >
                 <header class="flex items-center justify-between">
                   <h4 class="font-semibold text-slate-900 dark:text-cyan-200">
-                    Pekerjaan
+                    Job
                   </h4>
                   <button
                     type="button"
                     class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
                     data-goto-step="2"
                   >
-                    Ubah
+                    Edit
                   </button>
                 </header>
                 <dl
@@ -2299,14 +2365,14 @@
               >
                 <header class="flex items-center justify-between">
                   <h4 class="font-semibold text-slate-900 dark:text-cyan-200">
-                    Finansial
+                    Finance
                   </h4>
                   <button
                     type="button"
                     class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
                     data-goto-step="3"
                   >
-                    Ubah
+                    Edit
                   </button>
                 </header>
                 <dl
@@ -2328,7 +2394,7 @@
                     class="review-edit text-blue-600 hover:text-blue-500 dark:text-cyan-300 dark:hover:text-cyan-200 text-xs font-semibold hover:underline"
                     data-goto-step="4"
                   >
-                    Ubah
+                    Edit
                   </button>
                 </header>
                 <dl
@@ -2348,7 +2414,7 @@
               id="prevBtn"
               class="order-1 sm:order-none inline-flex items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-800 dark:text-white bg-slate-900/5 hover:bg-slate-900/10 ring-1 ring-slate-300/70 dark:ring-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-500 hidden"
             >
-              ‹ Sebelumnya
+              ‹ Previous
             </button>
 
             <div
@@ -2375,7 +2441,7 @@
                   d="M4 12a8 8 0 018-8v4A4 4 0 008 12H4z"
                 ></path>
               </svg>
-              Memproses…
+              Processing…
             </div>
 
             <div class="flex items-center gap-3 order-2 sm:order-none">
@@ -2384,14 +2450,14 @@
                 id="nextBtn"
                 class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                Selanjutnya ›
+                Next ›
               </button>
               <button
                 type="submit"
                 id="submitBtn"
                 class="hidden inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
-                Konfirmasi & Prediksi
+                Confirm & Predict
               </button>
             </div>
           </div>
@@ -2426,15 +2492,15 @@
           <h2
             class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white"
           >
-            Upload Data CSV
+            Upload CSV Data
             <span
               class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-400 dark:from-cyan-200 dark:to-yellow-200"
             >
-              untuk Prediksi
+              for Prediction
             </span>
           </h2>
           <p class="mt-2 text-slate-700 dark:text-slate-200">
-            Gunakan Template Attrition Predict lalu unggah file di bawah.
+            Use the Attrition Predict template then upload the file below.
           </p>
         </header>
 
@@ -2453,7 +2519,7 @@
             >
             <span
               class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-slate-900/5 text-slate-700 ring-1 ring-slate-200/70 dark:bg-white/10 dark:text-slate-200 dark:ring-white/10"
-              >Delimiter koma</span
+              >Comma delimiter</span
             >
             <span
               class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-emerald-100/60 text-emerald-800 ring-1 ring-emerald-200/70 dark:bg-white/10 dark:text-emerald-200 dark:ring-white/10"
@@ -2461,18 +2527,18 @@
             >
             <span
               class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-amber-100/60 text-amber-800 ring-1 ring-amber-200/70 dark:bg-white/10 dark:text-amber-200 dark:ring-white/10"
-              >≤ 50k baris</span
+              >≤ 50k rows</span
             >
             <span
               class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold bg-rose-100/60 text-rose-800 ring-1 ring-rose-200/70 dark:bg-white/10 dark:text-rose-200 dark:ring-white/10"
-              >Header 19 kolom (case-sensitive)</span
+              >Header 19 columns (case-sensitive)</span
             >
           </div>
 
           <!-- Dropzone -->
           <fieldset>
             <legend class="sr-only">
-              Upload Data CSV untuk Prediksi Attrition
+              Upload CSV Data for Attrition Prediction
             </legend>
 
             <label
@@ -2505,10 +2571,10 @@
                 <path d="M12 12v8m0-8-3 3m3-3 3 3" />
               </svg>
               <span class="text-slate-800 dark:text-white font-medium"
-                >Klik atau seret file CSV ke sini</span
+                >Click or drag CSV file here</span
               >
               <span class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                >Drop untuk mulai mengunggah</span
+                >Drop to start uploading</span
               >
 
               <input
@@ -2527,8 +2593,8 @@
               id="csvHelp"
               class="mt-2 text-sm text-slate-600 dark:text-slate-300"
             >
-              Pastikan header sesuai template (19 kolom). Nilai kategorikal
-              harus sesuai opsi yang didukung.
+              Make sure the header matches the template (19 columns).
+              Categorical values must match supported options.
             </p>
           </fieldset>
 
@@ -2541,7 +2607,7 @@
               class="text-sm text-slate-600 dark:text-slate-300"
               aria-live="polite"
             >
-              Belum ada file yang dipilih
+              No file selected yet
             </p>
 
             <div class="flex items-center gap-2">
@@ -2550,14 +2616,14 @@
                 type="button"
                 class="hidden h-10 px-4 rounded-xl text-sm font-medium ring-1 ring-slate-300/70 dark:ring-white/10 bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 dark:text-white"
               >
-                Ganti File
+                Change File
               </button>
               <button
                 id="btnClearFile"
                 type="button"
-                class="hidden h-10 px-4 rounded-xl text-sm font-medium bg-rose-100/70 text-rose-800 ring-1 ring-rose-200/70 hover:bg-rose-100 dark:bg-white/10 dark:text-rose-200 dark:ring-white/10"
+                class="hidden h-10 px-4 rounded-xl text-sm font-medium bg-rose-100/70 text-rose-800 ring-1 ring-rose-200/70 hover:bg-rose-105/75 dark:bg-white/10 dark:text-rose-200 dark:ring-white/10"
               >
-                Hapus
+                Remove
               </button>
               <button
                 id="csvSubmit"
@@ -2565,7 +2631,7 @@
                 disabled
                 class="h-10 px-5 rounded-xl text-white text-sm font-semibold shadow-sm disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-blue-600 to-cyan-500 hover:brightness-110 focus:ring-2 focus:ring-cyan-400 focus:outline-none"
               >
-                Proses CSV
+                Process CSV
               </button>
             </div>
           </div>
@@ -2590,7 +2656,7 @@
               id="csvLoaderText"
               class="text-center text-xs text-slate-600 dark:text-slate-300 mt-1"
             >
-              Memproses CSV…
+              Processing CSV…
             </p>
           </div>
 
@@ -2602,31 +2668,37 @@
           ></pre>
         </form>
 
-        <!-- RESULT CARD -->
+        <!-- RESULT CARD (Improved) -->
         <section id="csvResult" class="mt-10 hidden">
           <div
-            class="rounded-2xl overflow-hidden shadow-xl backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
+            class="rounded-2xl overflow-hidden shadow-2xl backdrop-blur bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10"
           >
             <!-- Toolbar -->
             <div
-              class="px-6 py-4 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/5 dark:bg-white/10"
+              class="px-6 py-4 border-b border-slate-200/70 dark:border-white/10 bg-gradient-to-r from-slate-900/5 to-slate-900/0 dark:from-white/10 dark:to-transparent"
             >
               <div
                 class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
+                <!-- Title + count -->
                 <div class="flex items-center gap-3">
                   <h3
-                    class="text-lg sm:text-xl font-semibold text-slate-800 dark:text-white"
+                    class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2"
                   >
-                    Hasil Prediksi CSV
+                    <span
+                      class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 ring-1 ring-cyan-500/20"
+                      >📊</span
+                    >
+                    CSV Prediction Results
                   </h3>
                   <span
                     id="csvCount"
-                    class="text-[11px] bg-blue-100/70 text-blue-800 px-2 py-1 rounded-full font-semibold ring-1 ring-blue-200/70 dark:bg-white/10 dark:text-cyan-200 dark:ring-white/10"
-                    >0 baris</span
+                    class="text-[11px] px-2 py-1 rounded-full font-semibold bg-blue-100/70 text-blue-800 ring-1 ring-blue-200/70 dark:bg-white/10 dark:text-cyan-200 dark:ring-white/10"
+                    >0 rows</span
                   >
                 </div>
 
+                <!-- Controls -->
                 <div
                   class="w-full sm:w-auto flex flex-wrap items-center gap-2 sm:gap-3"
                 >
@@ -2635,17 +2707,18 @@
                     <input
                       id="csvSearch"
                       type="text"
-                      placeholder="Cari nama / prediksi…"
-                      class="h-10 w-full pl-10 pr-9 rounded-xl text-sm outline-none bg-white/90 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                      placeholder="Search name / prediction…"
+                      class="h-10 w-full pl-10 pr-9 rounded-xl text-sm outline-none bg-white/95 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                      aria-label="Search"
                     />
                     <svg
                       class="w-5 h-5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
-                      aria-hidden="true"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.8"
+                      aria-hidden="true"
                     >
                       <path
                         d="M21 21l-4.35-4.35M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
@@ -2655,8 +2728,8 @@
                       id="csvSearchClear"
                       type="button"
                       class="hidden absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-slate-500 hover:bg-slate-900/10 dark:text-slate-300 dark:hover:bg-white/10"
-                      title="Bersihkan pencarian"
-                      aria-label="Bersihkan"
+                      title="Clear search"
+                      aria-label="Clear"
                     >
                       ✕
                     </button>
@@ -2665,44 +2738,48 @@
                   <!-- Filter -->
                   <select
                     id="csvFilter"
-                    class="h-10 text-sm rounded-xl px-3 bg-white/90 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
-                    aria-label="Filter prediksi"
+                    class="h-10 text-sm rounded-xl px-3 bg-white/95 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                    aria-label="Filter prediction"
                   >
-                    <option value="">Semua Prediksi</option>
-                    <option value="Karyawan Bertahan">Bertahan</option>
-                    <option value="Karyawan Mungkin Resign">Resign</option>
+                    <option value="">All Predictions</option>
+                    <option value="Retained">Retained</option>
+                    <option value="Resignation">Resign</option>
                   </select>
 
                   <!-- Sort -->
                   <select
                     id="csvSort"
-                    class="h-10 text-sm rounded-xl px-3 bg-white/90 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
-                    aria-label="Urutkan hasil"
+                    class="h-10 text-sm rounded-xl px-3 bg-white/95 border border-slate-300/70 shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-500 dark:bg-white/5 dark:border-white/10 dark:text-white"
+                    aria-label="Sort results"
                   >
                     <option value="idx-asc">Index ↑</option>
                     <option value="idx-desc">Index ↓</option>
                     <option value="conf-desc">Confidence ↑</option>
                     <option value="conf-asc">Confidence ↓</option>
-                    <option value="stay-desc">% Bertahan ↑</option>
-                    <option value="stay-asc">% Bertahan ↓</option>
+                    <option value="stay-desc">% Retained ↑</option>
+                    <option value="stay-asc">% Retained ↓</option>
                     <option value="quit-desc">% Resign ↑</option>
                     <option value="quit-asc">% Resign ↓</option>
                   </select>
 
-                  <!-- Reset & Download -->
+                  <!-- Reset -->
                   <button
                     id="csvReset"
                     type="button"
-                    class="h-10 inline-flex items-center justify-center text-sm px-4 rounded-xl bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 ring-1 ring-slate-300/70 dark:bg-white/10 dark:text-white dark:ring-white/10"
+                    class="h-10 inline-flex items-center justify-center gap-2 text-sm px-4 rounded-xl bg-slate-900/5 hover:bg-slate-900/10 text-slate-800 ring-1 ring-slate-300/70 dark:bg-white/10 dark:text-white dark:ring-white/10"
+                    title="Reset filter & sort"
                   >
-                    Reset
+                    ↺ <span class="hidden sm:inline">Reset</span>
                   </button>
+
+                  <!-- Download (direct PDF, no dropdown) -->
                   <button
                     id="csvDownloadPdf"
                     type="button"
-                    class="h-10 inline-flex items-center justify-center text-sm px-4 rounded-xl text-white bg-gradient-to-r from-blue-600 to-cyan-500 shadow-sm hover:brightness-110 focus:ring-2 focus:ring-cyan-400 focus:outline-none"
+                    class="h-10 inline-flex items-center gap-2 px-4 rounded-xl text-sm text-white bg-gradient-to-r from-blue-600 to-cyan-500 shadow-sm hover:brightness-110 focus:ring-2 focus:ring-cyan-400 disabled:opacity-60 disabled:cursor-not-allowed"
+                    aria-label="Download results as PDF"
                   >
-                    Download PDF
+                    ⬇ <span>Download PDF</span>
                   </button>
                 </div>
               </div>
@@ -2714,14 +2791,13 @@
               class="px-6 py-4 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/5 dark:bg-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3"
             ></div>
 
-        
-         <!-- Table -->
+            <!-- Table -->
             <div class="overflow-x-auto relative">
               <table
                 class="min-w-full table-fixed text-sm text-slate-800 dark:text-slate-200"
               >
                 <caption class="sr-only">
-                  Hasil prediksi per baris pada CSV
+                  Row prediction results on CSV
                 </caption>
                 <colgroup>
                   <col style="width: 80px" />
@@ -2732,7 +2808,7 @@
                   <col style="width: 140px" />
                 </colgroup>
                 <thead
-                  class="sticky top-0 z-10 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/10 backdrop-blur supports-[backdrop-filter]:bg-slate-900/10 dark:bg-white/10"
+                  class="sticky top-0 z-10 border-b border-slate-200/70 dark:border-white/10 bg-slate-900/10 dark:bg-white/10 backdrop-blur"
                 >
                   <tr class="text-slate-700 dark:text-slate-200">
                     <th
@@ -2745,19 +2821,19 @@
                       scope="col"
                       class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
                     >
-                      Nama Karyawan
+                      Employee Name
                     </th>
                     <th
                       scope="col"
                       class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
                     >
-                      Prediksi
+                      Prediction
                     </th>
                     <th
                       scope="col"
                       class="px-5 py-3 text-left text-[11px] font-semibold uppercase tracking-wide"
                     >
-                      % Bertahan
+                      % Retained
                     </th>
                     <th
                       scope="col"
@@ -2775,8 +2851,10 @@
                 </thead>
                 <tbody
                   id="csvResultBody"
-                  class="divide-y divide-slate-200/70 dark:divide-white/10"
-                ></tbody>
+                  class="divide-y divide-slate-200/70 dark:divide-white/10 [&>tr]:bg-slate-900/10 dark:[&>tr]:bg-white/10 [&>tr]:transition-colors [&>tr:hover]:bg-slate-900/20 dark:[&>tr:hover]:bg-white/20"
+                >
+                  <!-- rows injected via JS -->
+                </tbody>
               </table>
 
               <!-- fade edges -->
@@ -2786,9 +2864,27 @@
               <div
                 class="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-transparent to-slate-900/5 dark:to-white/10"
               ></div>
+
+              <!-- Empty state -->
+              <div
+                id="csvEmpty"
+                class="hidden absolute inset-0 grid place-items-center p-8"
+              >
+                <div class="text-center max-w-sm">
+                  <div
+                    class="mx-auto h-12 w-12 rounded-2xl grid place-items-center bg-slate-900/5 dark:bg-white/10 ring-1 ring-slate-200/70 dark:ring-white/10 mb-3"
+                  >
+                    📥
+                  </div>
+                  <h4 class="font-semibold text-slate-800 dark:text-white">
+                    No results yet
+                  </h4>
+                  <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+                    Upload a CSV and process it to see predictions here.
+                  </p>
+                </div>
+              </div>
             </div>
-
-
 
             <!-- Pagination -->
             <div
@@ -2798,7 +2894,7 @@
                 <label
                   for="csvPageSize"
                   class="text-sm text-slate-600 dark:text-slate-300"
-                  >Baris per halaman:</label
+                  >Rows per page:</label
                 >
                 <select
                   id="csvPageSize"
@@ -2810,24 +2906,26 @@
                   <option value="100">100</option>
                 </select>
               </div>
+
               <div
                 id="csvPageInfo"
                 class="text-sm text-slate-600 dark:text-slate-300"
               >
-                Menampilkan 0–0 dari 0
+                Showing 0–0 of 0
               </div>
+
               <div id="csvPagination" class="flex items-center gap-1">
                 <button
                   id="csvFirst"
                   class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
-                  title="Halaman pertama"
+                  title="First page"
                 >
                   «
                 </button>
                 <button
                   id="csvPrev"
                   class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
-                  title="Sebelumnya"
+                  title="Previous"
                 >
                   ‹
                 </button>
@@ -2838,14 +2936,14 @@
                 <button
                   id="csvNext"
                   class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
-                  title="Berikutnya"
+                  title="Next"
                 >
                   ›
                 </button>
                 <button
                   id="csvLast"
                   class="px-2 py-1 rounded ring-1 ring-slate-300/70 bg-slate-900/5 hover:bg-slate-900/10 dark:ring-white/10 dark:bg-white/10 dark:hover:bg-white/15"
-                  title="Halaman terakhir"
+                  title="Last page"
                 >
                   »
                 </button>
@@ -2866,33 +2964,8 @@
     <div
       id="toast"
       class="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] hidden w-full max-w-md px-4"
-    >
-      <!-- JS kamu bisa inject item seperti:
-  <div role="status" class="pointer-events-auto mb-2 flex items-start gap-3 rounded-2xl px-4 py-3 shadow-xl
-                            backdrop-blur ring-1
-                            bg-white/90 text-slate-900 ring-slate-200/80
-                            dark:bg-white/10 dark:text-white dark:ring-white/10">
-    <span class="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">✔</span>
-    <div class="text-sm">
-      <div class="font-semibold">Berhasil</div>
-      <p class="opacity-90">CSV terunggah.</p>
-    </div>
-    <button class="ml-auto shrink-0 rounded-md px-2 py-1 text-xs text-slate-500 hover:bg-slate-900/5 dark:text-slate-300 dark:hover:bg-white/10">Tutup</button>
-  </div>
-  -->
-    </div>
+    ></div>
 
-    <!-- Back to top -->
-    <button
-      id="backToTop"
-      type="button"
-      title="Kembali ke atas"
-      aria-label="Kembali ke atas"
-      onclick="window.scrollTo({top:0,behavior:'smooth'})"
-      class="fixed bottom-6 right-6 z-50 hidden p-3 rounded-full shadow-lg bg-gradient-to-r from-yellow-300 to-yellow-500 text-blue-900 ring-1 ring-black/5 hover:translate-y-[-2px] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-yellow-300"
-    >
-      ↑
-    </button>
     <!-- Footer -->
     <footer
       class="relative mt-0 -mt-px text-white overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 dark:from-slate-900 dark:via-slate-800 dark:to-slate-800"
@@ -2911,7 +2984,7 @@
         aria-hidden="true"
       ></div>
 
-      <!-- top divider (rapetin seam) -->
+      <!-- top divider (tighten seam) -->
       <div
         class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/30"
         aria-hidden="true"
@@ -2929,18 +3002,16 @@
             <span
               class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 ring-1 ring-white/15"
             >
-              🛡️ <span class="text-white/90">Data terenkripsi</span>
+              🛡️ <span class="text-white/90">Data encrypted</span>
             </span>
             <span
               class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 ring-1 ring-white/15"
             >
-              ⚡ <span class="text-white/90">Prediksi &lt; 1 detik*</span>
+              ⚡ <span class="text-white/90">Prediction &lt; 1 second*</span>
             </span>
           </div>
         </div>
-        <p class="mt-2 text-xs text-white/70">
-          Dibuat untuk HR yang lebih cerdas
-        </p>
+        <p class="mt-2 text-xs text-white/70">Built for smarter HR</p>
       </div>
     </footer>
 
