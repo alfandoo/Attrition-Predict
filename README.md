@@ -4,9 +4,12 @@
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-orange?logo=scikitlearn)  
 ![Status](https://img.shields.io/badge/Build-Passing-brightgreen)  
 ![License](https://img.shields.io/badge/License-MIT-yellow)  
-![Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
+![Colab](https://img.shields.io/badge/Google%20Colab-Notebook-orange?logo=googlecolab)
 
 This project aims to predict employee attrition (resignation risk) using machine learning models. High employee turnover is costly and impacts productivity. By predicting attrition early, HR teams can take proactive measures to retain key talent.
+
+🔗 **Repository:** [GitHub Project](https://github.com/alfandoo/Attrition-Predict)  
+🌐 **Live Demo:** [Hugging Face Spaces Deployment](https://huggingface.co/spaces/alfando/attritrion-predict)
 
 ---
 
@@ -17,15 +20,15 @@ This project aims to predict employee attrition (resignation risk) using machine
 
 ---
 
-## 🛠️ Libraries
+## 🛠️ Tech Stack
 
-The following Python libraries are used in this project:
-
-- `pandas`, `numpy` → data manipulation
-- `matplotlib`, `seaborn` → visualization
-- `scikit-learn` → preprocessing, modeling, evaluation
-- `imblearn (SMOTE)` → class balancing
-- `xgboost` → advanced boosting model
+- **Programming Language**: Python 3.10+
+- **Data Handling**: Pandas, NumPy
+- **Visualization**: Matplotlib, Seaborn
+- **Machine Learning**: Scikit-learn, XGBoost
+- **Data Balancing**: Imbalanced-learn (SMOTE)
+- **Deployment**: Hugging Face Spaces (Gradio/Streamlit)
+- **Environment**: Google Colab, Jupyter Notebook
 
 ---
 
